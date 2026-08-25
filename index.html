@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SE Faculty &amp; Advisor Handbook</title>
+<style>
+  :root{
+    --paper:#F3F4F7; --card:#FFFFFF; --ink:#141B24; --ink-2:#3A4655; --ink-3:#6A7686;
+    --line:#DCE0E7; --line-2:#E9ECF1;
+    --p1:#3E7CB1; --p2:#2A9D8F; --p3:#E1972B; --p4:#D9542B;
+    --accent:var(--p4); --accent-soft:#FBEAE2;
+    --good:#2A9D8F; --warn:#E1972B; --stop:#C6402A;
+    --shadow:0 1px 2px rgba(20,27,36,.05),0 10px 30px rgba(20,27,36,.07);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0E141B; --card:#161F2A; --ink:#EAEEF4; --ink-2:#AEB9C7; --ink-3:#7C8797;
+      --line:#26313E; --line-2:#1E2733; --p1:#5B9BD1; --p2:#3FB9AA; --p3:#EFB44A; --p4:#EE7350;
+      --accent-soft:#33211a; --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#F3F4F7; --card:#FFFFFF; --ink:#141B24; --ink-2:#3A4655; --ink-3:#6A7686;
+    --line:#DCE0E7; --line-2:#E9ECF1; --p1:#3E7CB1; --p2:#2A9D8F; --p3:#E1972B; --p4:#D9542B;
+    --accent-soft:#FBEAE2; --shadow:0 1px 2px rgba(20,27,36,.05),0 10px 30px rgba(20,27,36,.07);
+  }
+  :root[data-theme="dark"]{
+    --paper:#0E141B; --card:#161F2A; --ink:#EAEEF4; --ink-2:#AEB9C7; --ink-3:#7C8797;
+    --line:#26313E; --line-2:#1E2733; --p1:#5B9BD1; --p2:#3FB9AA; --p3:#EFB44A; --p4:#EE7350;
+    --accent-soft:#33211a; --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,"Noto Sans Thai",system-ui,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .wrap{max-width:1040px;margin:0 auto;padding:84px 22px 90px}
+
+  .eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:clamp(11px,1.5vw,13px);letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-3);margin:0}
+  h1{font-size:clamp(30px,5.4vw,52px);line-height:1.06;letter-spacing:-.02em;font-weight:800;margin:6px 0 0;text-wrap:balance}
+  h2{font-size:clamp(22px,3.4vw,32px);line-height:1.12;letter-spacing:-.02em;font-weight:800;margin:0;text-wrap:balance}
+  .lead{font-size:clamp(16px,2.1vw,20px);color:var(--ink-2);max-width:70ch;margin:10px 0 0}
+  .lead b{color:var(--ink)}
+
+  /* top bar (from deck) */
+  .bar-top{position:fixed;top:14px;left:18px;right:18px;display:flex;align-items:center;justify-content:space-between;z-index:20;pointer-events:none}
+  .bar-top .code{pointer-events:auto;font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;color:#fff;background:var(--ink);padding:5px 10px;border-radius:6px;letter-spacing:.04em}
+  .bar-top .tg{pointer-events:auto;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:20px;cursor:pointer}
+  .bar-top .tg:hover{border-color:var(--ink-3)}
+
+  /* hero */
+  .hero{border-left:4px solid var(--accent);padding-left:clamp(16px,3vw,26px)}
+  .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-family:ui-monospace,Menlo,monospace;font-size:clamp(11px,1.5vw,13px);color:var(--ink-2);background:var(--card);
+    border:1px solid var(--line);border-radius:8px;padding:7px 11px}
+  .chip b{color:var(--ink)}
+  .chip.hot{background:var(--accent-soft);border-color:transparent;color:var(--accent);font-weight:700}
+
+  /* notice */
+  .notice{margin:26px 0 6px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--warn);
+    border-radius:14px;padding:16px 18px;font-size:clamp(13.5px,1.7vw,15.5px);color:var(--ink-2);box-shadow:var(--shadow)}
+  .notice .k{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--warn);display:block;margin-bottom:5px}
+  .notice b{color:var(--ink)}
+
+  .sec{margin-top:52px}
+  .sec-head{margin-bottom:18px}
+  .sec-head .lead{font-size:clamp(14px,1.8vw,16.5px);margin-top:6px}
+
+  /* responsibility boxes */
+  .stack{display:grid;gap:16px}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow)}
+  .box .num{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .box.a1 .num{color:var(--p1)} .box.a2 .num{color:var(--p2)} .box.a3 .num{color:var(--p3)} .box.a4 .num{color:var(--p4)}
+  .box.a1{border-top:3px solid var(--p1)} .box.a2{border-top:3px solid var(--p2)}
+  .box.a3{border-top:3px solid var(--p3)} .box.a4{border-top:3px solid var(--p4)}
+  .box h3{margin:4px 0 0;font-size:clamp(19px,2.6vw,26px);font-weight:780;letter-spacing:-.01em}
+  .box .role{color:var(--ink-3);font-size:clamp(13.5px,1.7vw,15px);margin:2px 0 0}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
+  .k{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:0 0 7px}
+  ul.list{margin:0;padding-left:18px;color:var(--ink-2);font-size:clamp(13.5px,1.7vw,15.5px);display:flex;flex-direction:column;gap:6px}
+  ul.list b{color:var(--ink)}
+  .ev{background:var(--paper);border:1px solid var(--line-2);border-radius:12px;padding:12px 14px}
+  .ev ul{margin:0;padding-left:17px;color:var(--ink-2);font-size:clamp(12.5px,1.6vw,14px);display:flex;flex-direction:column;gap:5px}
+  .src{margin-top:16px;padding-top:12px;border-top:1px solid var(--line-2);display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12.5px;color:var(--ink-3)}
+  .tag{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:var(--ink-2);background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:4px 9px}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .lnk{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--ink);background:var(--card);border:1px solid var(--line);
+    border-radius:8px;padding:7px 12px;cursor:pointer}
+  .lnk:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+  .lnk.solid{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .lnk.solid:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+  /* scenarios */
+  details.scn{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:10px 0;box-shadow:var(--shadow);overflow:hidden}
+  details.scn summary{cursor:pointer;padding:15px 20px;list-style:none;display:flex;align-items:center;gap:12px}
+  details.scn summary::-webkit-details-marker{display:none}
+  details.scn summary .st{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;color:var(--accent);min-width:26px}
+  details.scn summary .sh{font-weight:700;font-size:clamp(14.5px,1.9vw,17px)}
+  details.scn summary .stag{margin-left:auto;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em}
+  details.scn summary::after{content:"+";font-family:ui-monospace,Menlo,monospace;color:var(--ink-3);font-size:16px;margin-left:10px}
+  details.scn[open] summary::after{content:"–"}
+  details.scn[open] summary{border-bottom:1px solid var(--line-2)}
+  .scn-body{padding:14px 20px 18px;font-size:clamp(13px,1.7vw,15px)}
+  .step{display:flex;gap:11px;margin:9px 0;color:var(--ink-2)}
+  .step .n{flex:none;width:22px;height:22px;border-radius:6px;background:var(--paper);border:1px solid var(--line);
+    color:var(--ink);font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;display:grid;place-items:center;margin-top:1px}
+  .flag{font-size:clamp(12.5px,1.6vw,14px);border-radius:10px;padding:10px 13px;margin-top:12px;color:var(--ink-2)}
+  .flag .k{margin-bottom:4px}
+  .flag.pdpa{background:var(--accent-soft);border:1px solid var(--line);border-left:3px solid var(--warn)}
+  .flag.pdpa .k{color:var(--warn)}
+  .flag.care{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--good)}
+  .flag.care .k{color:var(--good)}
+  .flag b{color:var(--ink)}
+
+  /* table */
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:660px;font-size:clamp(12.5px,1.6vw,14px);background:var(--card)}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line-2);vertical-align:top}
+  th{background:var(--paper);font-family:ui-monospace,Menlo,monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);font-weight:700}
+  tr:last-child td{border-bottom:none}
+  td code{font-family:ui-monospace,Menlo,monospace;background:var(--paper);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:12px;color:var(--ink-2)}
+
+  /* directory + principles grids */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .c{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:7px}
+  .c .kk{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+  .c h4{margin:0;font-size:clamp(14.5px,1.9vw,17px);font-weight:750}
+  .c p{margin:0;font-size:clamp(12.5px,1.6vw,14px);color:var(--ink-2)}
+  .c .lnk{align-self:flex-start;margin-top:2px}
+  .prin .kk{color:var(--ink-3)}
+
+  .todo{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:var(--warn);border:1px dashed var(--warn);padding:2px 7px;border-radius:6px}
+
+  footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);font-size:clamp(12.5px,1.6vw,14px);color:var(--ink-3)}
+  footer b{color:var(--ink-2)}
+
+  @media (max-width:760px){
+    .cols,.grid3,.grid4{grid-template-columns:1fr}
+    .wrap{padding:78px 18px 80px}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar-top">
+  <span class="code">SE PROGRAMME</span>
+  <button class="tg" id="tg" aria-label="Toggle theme">theme</button>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="eyebrow">Faculty &amp; Academic Advisor Handbook</p>
+    <h1>Advising, assessment &amp; evidence — in one place</h1>
+    <p class="lead">Practical guidance for faculty and academic advisors of the <b>B.Eng. Software Engineering</b> programme, School of Applied Digital Technology, Mae Fah Luang University.</p>
+    <div class="facts">
+      <span class="chip hot">Academic Year 2569 / 2026–27</span>
+      <span class="chip">Aligned to <b>AUN-QA v4.0</b> · C1–C8</span>
+      <span class="chip">Maintained by the Programme Coordinator</span>
+    </div>
+  </header>
+
+  <!-- NOTICE -->
+  <div class="notice">
+    <span class="k">About this page</span>
+    This is <b>public professional guidance</b> and contains <b>no student data</b>. Every tool linked here lives inside the
+    <b>MFU Google Workspace / REG</b> and <b>requires an MFU login</b>, so a public link never exposes any record.
+    Never place student names, IDs, cases, grades, or system passwords here. Handle all personal data under <b>PDPA</b> — de-identify for analysis.
+  </div>
+
+  <!-- PRINCIPLES -->
+  <div class="sec">
+    <div class="grid4 prin">
+      <div class="c"><span class="kk">Principle 01</span><h4>Collect as you go</h4><p>Capture evidence when the event happens — not at year-end.</p></div>
+      <div class="c"><span class="kk">Principle 02</span><h4>Stay traceable</h4><p>File + date + source + which AUN-QA criterion it supports.</p></div>
+      <div class="c"><span class="kk">Principle 03</span><h4>Store once, reuse</h4><p>One central copy per document; link to it, don't duplicate.</p></div>
+      <div class="c"><span class="kk">Principle 04</span><h4>Close the loop</h4><p>Data collected must lead to a stated action or change.</p></div>
+    </div>
+  </div>
+
+  <!-- ANNUAL PLAN TIMELINE -->
+  <style>
+    .tl{position:relative;margin-top:8px;padding-left:24px}
+    .tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
+    .tl .ph{position:relative;padding:0 0 20px 6px}
+    .tl .ph:last-child{padding-bottom:0}
+    .tl .ph::before{content:"";position:absolute;left:-24px;top:3px;width:13px;height:13px;border-radius:50%;
+      background:var(--accent);box-shadow:0 0 0 3px var(--paper)}
+    .tl .ph.p1::before{background:var(--p1)} .tl .ph.p2::before{background:var(--p2)}
+    .tl .ph.p3::before{background:var(--p3)} .tl .ph.p4::before{background:var(--p4)}
+    .tl .when{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+    .tl h4{margin:2px 0 3px;font-size:clamp(15.5px,2vw,18px);font-weight:750}
+    .tl p{margin:0;font-size:clamp(13px,1.7vw,14.5px);color:var(--ink-2)}
+    .tl .hot{color:var(--accent);font-weight:700}
+  </style>
+  <div class="sec">
+    <div class="sec-head">
+      <p class="eyebrow">Annual plan · AY2569</p>
+      <h2>The year at a glance</h2>
+      <p class="lead">Six phases from the programme improvement plan — what to run and when across the academic year.</p>
+    </div>
+    <div class="tl">
+      <div class="ph p4">
+        <div class="when">Phase 0 · Jul – early Aug 2569</div>
+        <h4><span class="hot">Prepare</span> — before the term opens</h4>
+        <p>Ready every template first: advising log, dropout forms, rubric v2 &amp; central SP form, advisor SOP, IDP/impact, lab &amp; procurement plan.</p>
+      </div>
+      <div class="ph p1">
+        <div class="when">Phase 1 · Aug 2569 · Term 1 opens</div>
+        <h4>Communicate &amp; start collecting</h4>
+        <p>Orientation: PLO ↔ mission. Begin the continuous logs — TQF3, dropout, advising, Lab KM.</p>
+      </div>
+      <div class="ph p2">
+        <div class="when">Phase 2 · Sep – Nov 2569</div>
+        <h4>Mid Term 1</h4>
+        <p>Advisory Board minutes; fix ME &amp; IRPM traceability; release midterm before the drop deadline; government-brief projects; Hackathon.</p>
+      </div>
+      <div class="ph p3">
+        <div class="when">Phase 3 · Nov 2569 · End Term 1</div>
+        <h4>Verify &amp; bank evidence</h4>
+        <p>Course verification (ทวนสอบ) + TQF5; workload &amp; post-training impact; move confirmed evidence to the submission set.</p>
+      </div>
+      <div class="ph p1">
+        <div class="when">Phase 4 · Jan – Apr 2570 · Term 2</div>
+        <h4>Assess &amp; measure PLO</h4>
+        <p>ME selection; employer site visits; Exit Exam → PLO1; Senior Project scoring → PLO4.</p>
+      </div>
+      <div class="ph p2">
+        <div class="when">Phase 5 · May – Jun 2570 · Year end</div>
+        <h4>Analyse &amp; write SAR</h4>
+        <p>Stakeholder surveys; root-cause analysis (dropout / late graduation / employability); soft-skill PLO2,3,6; close evidence → SAR.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESPONSIBILITIES -->
+  <div class="sec">
+    <div class="sec-head">
+      <p class="eyebrow">Four core responsibilities</p>
+      <h2>What you own as programme faculty</h2>
+      <p class="lead">Each lists your duties, the granular evidence to keep, the AUN-QA criteria it supports, and the tools to use.</p>
+    </div>
+
+    <div class="stack">
+
+      <!-- 1 -->
+      <div class="box a1">
+        <p class="num">Responsibility 01</p>
+        <h3>Academic Advisor</h3>
+        <p class="role">Guiding, monitoring &amp; supporting your advisees</p>
+        <div class="cols">
+          <div>
+            <p class="k">What you do</p>
+            <ul class="list">
+              <li>Meet each advisee at least <b>once per semester</b> (more for at-risk students).</li>
+              <li>Review study plan, GPA, credits &amp; course selection each registration period.</li>
+              <li>Run <b>early-warning</b>: failing grades, absence, withdrawals, well-being signals.</li>
+              <li>Refer students needing help (financial, health, <b>mental health</b>) to the right unit.</li>
+              <li>Approve add/drop, leave &amp; academic requests within deadlines.</li>
+            </ul>
+          </div>
+          <div>
+            <p class="k">Evidence to keep</p>
+            <div class="ev"><ul>
+              <li>Advising session record — date, topic, agreed action (de-identified).</li>
+              <li>Group/one-on-one advising attendance or screenshots (timestamped).</li>
+              <li>Early-warning entries — trigger + action + outcome.</li>
+              <li>Referral records to Counselling / Student Affairs (coded, no names).</li>
+              <li>Signed academic request forms — filed with the secretary.</li>
+            </ul></div>
+          </div>
+        </div>
+        <div class="src">
+          <span class="tag">C6 Student Support</span><span class="tag">C4 Feedback</span><span class="tag">C1 PLO feedback</span>
+        </div>
+        <div class="links">
+          <a class="lnk solid" href="https://docs.google.com/forms/d/e/1FAIpQLSemcce9tjTF6cGCWcG5Y6R1k8x3ofKldnTqWyCseFU56ZNUVw/viewform" target="_blank" rel="noopener">Advising Log</a>
+          <a class="lnk" href="#" data-link>REG Dashboard</a>
+          <a class="lnk" href="#" data-link>Counselling Referral</a>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="box a2">
+        <p class="num">Responsibility 02</p>
+        <h3>Self-Development Plan</h3>
+        <p class="role">Your IDP, training &amp; academic growth</p>
+        <div class="cols">
+          <div>
+            <p class="k">What you do</p>
+            <ul class="list">
+              <li>Set an annual <b>Individual Development Plan (IDP)</b> aligned to your TOR and programme needs.</li>
+              <li>Plan training / conferences and request support through the School.</li>
+              <li>After training, record the <b>impact</b> — what you brought back into a course or research.</li>
+              <li>Maintain your publication and academic-position (promotion) trajectory.</li>
+            </ul>
+          </div>
+          <div>
+            <p class="k">Evidence to keep</p>
+            <div class="ev"><ul>
+              <li>IDP / TOR document for the year (goals + review).</li>
+              <li>Training certificates + <b>post-training impact log</b> → linked TQF3 change.</li>
+              <li>Publication record (journal / conference) with year &amp; indexing.</li>
+              <li>Promotion-application evidence (when applicable).</li>
+              <li>Internal knowledge-sharing you led (Lab KM, workshop) — agenda + record.</li>
+            </ul></div>
+          </div>
+        </div>
+        <div class="src">
+          <span class="tag">C5 Academic Staff</span><span class="tag">C3 Teaching approach</span>
+        </div>
+        <div class="links">
+          <a class="lnk solid" href="https://docs.google.com/forms/d/e/1FAIpQLSfdJOXw91ogVyWf0aLqPr4rNeZAba4VlXRrAWMSou4Jlj5Qtg/viewform" target="_blank" rel="noopener">IDP / TOR Form</a>
+          <a class="lnk" href="https://docs.google.com/forms/d/e/1FAIpQLSecrv3tfhB0LyHunM9MZmulVfwZYc6Hb__r8qzmHkdAG7FmsQ/viewform" target="_blank" rel="noopener">Training Impact Log</a>
+          <a class="lnk" href="#" data-link>Publication Log</a>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="box a3">
+        <p class="num">Responsibility 03</p>
+        <h3>Teaching Assessment &amp; PLO / CLO Attainment</h3>
+        <p class="role">Showing how learning is measured &amp; achieved</p>
+        <div class="cols">
+          <div>
+            <p class="k">What you do</p>
+            <ul class="list">
+              <li>Map each course: <b>CLO → PLO</b>, and each CLO to a concrete assessment.</li>
+              <li>Publish <b>rubrics with sub-criteria</b> to students <b>before</b> the work begins.</li>
+              <li>Time assessment properly — release <b>midterm results before the drop deadline</b>.</li>
+              <li>Report attainment: <b>Exit Exam → PLO1</b>, <b>Senior Project → PLO4</b>, plus PLO2/3/6 soft skills.</li>
+              <li>Run course verification (ทวนสอบ) at end of term.</li>
+            </ul>
+          </div>
+          <div>
+            <p class="k">Evidence to keep</p>
+            <div class="ev"><ul>
+              <li>TQF3 with CLO→PLO mapping and teaching/assessment methods.</li>
+              <li>Rubric v2 (sub-criteria + level descriptors) as distributed.</li>
+              <li>Assessment timeline showing midterm-before-drop dates.</li>
+              <li>Rubric scores per student per CLO → % attainment table.</li>
+              <li>Exit Exam item map (→PLO1), SP rubric (→PLO4) with thresholds.</li>
+              <li>TQF5 + course verification; LMS grade-release &amp; feedback records.</li>
+            </ul></div>
+          </div>
+        </div>
+        <div class="src">
+          <span class="tag">C4 Student Assessment</span><span class="tag">C1 PLO attainment</span><span class="tag">C8 Outcomes</span>
+        </div>
+        <div class="links">
+          <a class="lnk solid" href="#" data-link>Rubric Template</a>
+          <a class="lnk" href="#" data-link>CLO–PLO Matrix</a>
+          <a class="lnk" href="#" data-link>TQF3 / TQF5 Repository</a>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="box a4">
+        <p class="num">Responsibility 04</p>
+        <h3>Student Scenarios Playbook</h3>
+        <p class="role">What to do — and what to record — case by case</p>
+        <p class="lead" style="font-size:clamp(13.5px,1.7vw,15px);margin-top:12px">Nine standard cases below, each with the steps, the form to use, the evidence to keep, and PDPA notes — so every advisor handles them consistently.</p>
+        <div class="src">
+          <span class="tag">C6</span><span class="tag">C4</span><span class="tag">C8</span>
+          <a class="lnk" href="#scenarios" style="margin-left:auto">Go to scenarios ↓</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCENARIOS -->
+  <div class="sec" id="scenarios">
+    <div class="sec-head">
+      <p class="eyebrow">Student advising scenarios</p>
+      <h2>Case-by-case playbook</h2>
+      <p class="lead">Open a case for the steps, the form to use, and the evidence to capture.</p>
+    </div>
+
+    <details class="scn">
+      <summary><span class="st">01</span><span class="sh">Add / Drop a course</span><span class="stag">C4 · operations</span></summary>
+      <div class="scn-body">
+        <div class="step"><span class="n">1</span><div>Check prerequisites, credit load, and timetable conflicts against the study plan.</div></div>
+        <div class="step"><span class="n">2</span><div>Confirm the action is within the official add/drop window (see academic calendar).</div></div>
+        <div class="step"><span class="n">3</span><div>Approve in REG; keep the signed / e-approved request.</div></div>
+        <div class="flag care"><span class="k">Keep</span>Approved add/drop request + reason if unusual (feeds ME-elective demand data for C2).</div>
+      </div>
+    </details>
+
+    <details class="scn">
+      <summary><span class="st">02</span><span class="sh">Course withdrawal (W)</span><span class="stag">C4 · assessment timing</span></summary>
+      <div class="scn-body">
+        <div class="step"><span class="n">1</span><div>Ensure the student has seen their <b>midterm result before deciding</b> — advise on realistic pass likelihood.</div></div>
+        <div class="step"><span class="n">2</span><div>Discuss impact on progression and graduation timeline.</div></div>
+        <div class="step"><span class="n">3</span><div>Approve within the W deadline; log the reason.</div></div>
+        <div class="flag care"><span class="k">Keep</span>Withdrawal reason (bottleneck course? workload?) → feeds late-graduation root-cause analysis (C8).</div>
+      </div>
+    </details>
+
+    <details class="scn">
+      <summary><span class="st">03</span><span class="sh">Leave of absence</span><span class="stag">C6 · student support</span></summary>
+      <div class="scn-body">
+        <div class="step"><span class="n">1</span><div>Understand the reason (health, financial, personal) and expected return term.</div></div>
+        <div class="step"><span class="n">2</span><div>Explain fee / registration rules for maintaining student status.</div></div>
+        <div class="step"><span class="n">3</span><div>Approve the leave form; set a <b>return check-in reminder</b>.</div></div>
+        <div class="flag care"><span class="k">Keep</span>Leave record + follow-up plan. A leave that becomes non-return is an early dropout signal.</div>
+      </div>
+    </details>
+
+    <details class="scn">
+      <summary><span class="st">04</span><span class="sh">Academic probation / dismissal risk</span><span class="stag">C6 + C8 · early warning</span></summary>
+      <div class="scn-body">
+        <div class="step"><span class="n">1</span><div>Identify via GPA threshold / failed-credit count on the REG dashboard.</div></div>
+        <div class="step"><span class="n">2</span><div>Hold a support meeting: study-plan adjustment, tutoring, workload reduction.</div></div>
+        <div class="step"><span class="n">3</span><div>Log the intervention and monitor next-term outcome.</div></div>
+        <div class="flag care"><span class="k">Keep</span>Early-warning entry (trigger → action → outcome). Core C6 evidence and prevents dropout.</div>
+      </div>
+    </details>
+
+    <details class="scn">
+      <summary><span class="st">05</span><span class="sh">Resignation / dropout — with qualitative capture</span><span class="stag">C8 · root cause</span></summary>
+      <div class="scn-body">
+        <div class="step"><span class="n">1</span><div>Student submits the withdrawal / resignation form (existing paper flow: student → secretary → advisor signs → dean signs).</div></div>
+        <div class="step"><span class="n">2</span><div>At your signing moment, hold a short <b>exit conversation (~10 min)</b> and record: warning signals seen, the main factor in your view, help already given, whether it was preventable.</div></div>
+        <div class="step"><span class="n">3</span><div>Invite the student to complete their own short exit form (their words + what could have helped + next plan) on their phone — <b>consent-based</b>.</div></div>
+        <div class="step"><span class="n">4</span><div>Secretary adds objective facts (GPA, credits, admission channel) and files into the de-identified <b>Dropout Register</b>.</div></div>
+        <div class="step"><span class="n">5</span><div><b>Silent dropout</b> (no form, just stopped enrolling): advisor completes the record from known information and attempts contact.</div></div>
+        <div class="flag pdpa"><span class="k">PDPA</span>Keep identity separate from the analysis register (use student code); consent is optional and does not affect the resignation.</div>
+        <div class="flag care"><span class="k">Coding</span>Tag primary + up to 2 secondary causes (Academic / Fit / Financial / Health / Mental / Family / Transfer / Career / Other) so cases aggregate into a semester root-cause report.</div>
+      </div>
+    </details>
+
+    <details class="scn">
+      <summary><span class="st">06</span><span class="sh">Mental-health concern</span><span class="stag">C6 · well-being</span></summary>
+      <div class="scn-body">
+        <div class="step"><span class="n">1</span><div>Listen without judging; do not attempt to diagnose or counsel beyond your role.</div></div>
+        <div class="step"><span class="n">2</span><div><b>Refer</b> to the University Counselling / Wellness Center promptly; share the contact with the student.</div></div>
+        <div class="step"><span class="n">3</span><div>Agree on academic accommodations if needed (deadlines, load) and a discreet follow-up.</div></div>
+        <div class="flag pdpa"><span class="k">PDPA / duty of care</span>Health data is sensitive — record only what is necessary, store securely, never on this page. Referral matters more than data.</div>
+      </div>
+    </details>
+
+    <details class="scn">
+      <summary><span class="st">07</span><span class="sh">Grade appeal / grievance</span><span class="stag">C4 · fairness</span></summary>
+      <div class="scn-body">
+        <div class="step"><span class="n">1</span><div>Point the student to the rubric and grade-release evidence; explain the basis.</div></div>
+        <div class="step"><span class="n">2</span><div>If unresolved, route to the formal appeal channel per University regulation.</div></div>
+        <div class="step"><span class="n">3</span><div>Keep the rubric, scores, and correspondence as the transparency record.</div></div>
+        <div class="flag care"><span class="k">Keep</span>Rubric + score sheet + resolution note (supports C4 fairness &amp; transparency).</div>
+      </div>
+    </details>
+
+    <details class="scn">
+      <summary><span class="st">08</span><span class="sh">Internship / co-op issue</span><span class="stag">C1 + C8 · workplace</span></summary>
+      <div class="scn-body">
+        <div class="step"><span class="n">1</span><div>Coordinate with the site supervisor; clarify expectations and PLO-linked assessment.</div></div>
+        <div class="step"><span class="n">2</span><div>Conduct the site visit; collect the employer evaluation and student reflection.</div></div>
+        <div class="step"><span class="n">3</span><div>Escalate placement problems to the internship coordinator early.</div></div>
+        <div class="flag care"><span class="k">Keep</span>Site-visit report + employer evaluation → PLO feedback (C1) and employability data (C8).</div>
+      </div>
+    </details>
+
+    <details class="scn">
+      <summary><span class="st">09</span><span class="sh">Change of major / transfer</span><span class="stag">C2 + C8 · retention</span></summary>
+      <div class="scn-body">
+        <div class="step"><span class="n">1</span><div>Understand the motivation (fit, interest, opportunity elsewhere).</div></div>
+        <div class="step"><span class="n">2</span><div>Advise on credit transfer and process; complete the required forms.</div></div>
+        <div class="step"><span class="n">3</span><div>Record as a distinct outcome — a transfer is not a failure-type dropout.</div></div>
+        <div class="flag care"><span class="k">Keep</span>Transfer reason in the register — separates "left for a better fit" from "left due to difficulty" in C8 analysis.</div>
+      </div>
+    </details>
+  </div>
+
+  <!-- EVIDENCE TABLE -->
+  <div class="sec">
+    <div class="sec-head">
+      <p class="eyebrow">Evidence quick-reference</p>
+      <h2>Every unit, where it is filed</h2>
+      <p class="lead">Granular evidence units, the criterion each supports, and how often to collect.</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Evidence unit</th><th>File where</th><th>Criterion</th><th>Cadence</th></tr></thead>
+        <tbody>
+          <tr><td>Advising session record (de-identified)</td><td><code>C6</code> advising log</td><td>C6</td><td>Every session</td></tr>
+          <tr><td>Early-warning entry (trigger→action→outcome)</td><td><code>C6</code> early-warning</td><td>C6, C8</td><td>As it occurs</td></tr>
+          <tr><td>Counselling / mental-health referral (coded)</td><td><code>C6</code> referral (secure)</td><td>C6</td><td>As it occurs</td></tr>
+          <tr><td>Signed academic request (add/drop, leave, W)</td><td>Secretary file</td><td>C4</td><td>Per request</td></tr>
+          <tr><td>IDP / TOR + review</td><td><code>C5</code> staff</td><td>C5</td><td>Yearly</td></tr>
+          <tr><td>Post-training impact log</td><td><code>C5</code> staff</td><td>C5, C3</td><td>Each term</td></tr>
+          <tr><td>Publication record</td><td><code>C5</code> staff</td><td>C5, C8</td><td>Ongoing</td></tr>
+          <tr><td>TQF3 with CLO→PLO mapping</td><td>School TQF3 repository</td><td>C2, C3</td><td>Start of term</td></tr>
+          <tr><td>Rubric v2 (sub-criteria) as distributed</td><td><code>C4</code> assessment</td><td>C4</td><td>Start of term</td></tr>
+          <tr><td>Rubric scores per CLO → attainment %</td><td><code>C4</code> / <code>C1</code></td><td>C1, C4</td><td>End of term</td></tr>
+          <tr><td>Exit Exam item map → PLO1</td><td><code>C1</code> / <code>C8</code></td><td>C1, C8</td><td>March</td></tr>
+          <tr><td>Senior Project rubric → PLO4</td><td><code>C1</code> / <code>C4</code></td><td>C1, C4</td><td>End of SP</td></tr>
+          <tr><td>TQF5 + course verification (ทวนสอบ)</td><td><code>C4</code></td><td>C4</td><td>End of term</td></tr>
+          <tr><td>Dropout register entry + coded causes</td><td><code>C8</code> (de-identified)</td><td>C8</td><td>Per case</td></tr>
+          <tr><td>Site-visit report + employer evaluation</td><td><code>C1</code> / <code>C8</code></td><td>C1, C8</td><td>Feb / May</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- LINKS DIRECTORY -->
+  <div class="sec">
+    <div class="sec-head">
+      <p class="eyebrow">Links &amp; tools directory</p>
+      <h2>Where the data actually lives</h2>
+      <p class="lead">All tools open in the MFU Workspace / REG and require an MFU login.
+        <span class="todo">Coordinator: replace each placeholder link (href="#") in the source with the real MFU URL.</span></p>
+    </div>
+    <div class="grid3">
+      <div class="c"><span class="kk">Advising</span><h4>Advising Log</h4><p>Record advising sessions &amp; agreed actions (de-identified).</p><a class="lnk" href="https://docs.google.com/forms/d/e/1FAIpQLSemcce9tjTF6cGCWcG5Y6R1k8x3ofKldnTqWyCseFU56ZNUVw/viewform" target="_blank" rel="noopener">Open</a></div>
+      <div class="c"><span class="kk">Monitoring</span><h4>REG Dashboard</h4><p>GPA, credits &amp; early-warning signals per advisee.</p><a class="lnk" href="#" data-link>Open</a></div>
+      <div class="c"><span class="kk">Well-being</span><h4>Counselling Referral</h4><p>Refer students to the Wellness / Counselling Center.</p><a class="lnk" href="#" data-link>Open</a></div>
+      <div class="c"><span class="kk">Staff</span><h4>IDP / TOR Form</h4><p>Set and review your annual development plan.</p><a class="lnk" href="https://docs.google.com/forms/d/e/1FAIpQLSfdJOXw91ogVyWf0aLqPr4rNeZAba4VlXRrAWMSou4Jlj5Qtg/viewform" target="_blank" rel="noopener">Open</a></div>
+      <div class="c"><span class="kk">Staff</span><h4>Training Impact Log</h4><p>Record what you gained and how you applied it.</p><a class="lnk" href="https://docs.google.com/forms/d/e/1FAIpQLSecrv3tfhB0LyHunM9MZmulVfwZYc6Hb__r8qzmHkdAG7FmsQ/viewform" target="_blank" rel="noopener">Open</a></div>
+      <div class="c"><span class="kk">Assessment</span><h4>Rubric Template</h4><p>Rubric with sub-criteria &amp; level descriptors.</p><a class="lnk" href="#" data-link>Open</a></div>
+      <div class="c"><span class="kk">Mapping</span><h4>CLO–PLO Matrix</h4><p>Map course CLOs to programme PLOs.</p><a class="lnk" href="#" data-link>Open</a></div>
+      <div class="c"><span class="kk">Course spec</span><h4>TQF3 / TQF5 Directory</h4><p>Every course’s TQF (มคอ.) — link per course below.</p><a class="lnk" href="#tqf-directory">Open</a></div>
+      <div class="c"><span class="kk">Dropout</span><h4>Dropout Exit Forms</h4><p>Advisor exit note + student self-report (consent).</p><a class="lnk" href="https://docs.google.com/forms/d/e/1FAIpQLSc40IslNGkAwdlzRkxcBB7ibWjxt4u4_ALl6b8t4v7gyXNWCg/viewform" target="_blank" rel="noopener">Open</a></div>
+      <div class="c"><span class="kk">Dropout</span><h4>Dropout Register</h4><p>De-identified case log with coded causes.</p><a class="lnk" href="#" data-link>Open</a></div>
+      <div class="c"><span class="kk">Internship</span><h4>Site-Visit / Employer Form</h4><p>Internship evaluation &amp; PLO feedback.</p><a class="lnk" href="#" data-link>Open</a></div>
+      <div class="c"><span class="kk">Reference</span><h4>Academic Calendar</h4><p>Add/drop, W, midterm &amp; exam deadlines.</p><a class="lnk" href="#" data-link>Open</a></div>
+    </div>
+  </div>
+
+  <!-- SE LAB & FACILITIES -->
+  <div class="sec" id="se-lab">
+    <div class="sec-head">
+      <p class="eyebrow">Facilities · C7</p>
+      <h2>SE Laboratory &amp; facilities</h2>
+      <p class="lead">Quick reference for teaching, Senior Project and Lab KM. The detailed equipment
+        inventory lives behind an MFU login and is maintained by the lab resource owner.</p>
+    </div>
+    <div class="box a4">
+      <p class="num">Room · S7A-104</p>
+      <h3>SE Laboratory</h3>
+      <p class="role">School of Applied Digital Technology · managed by Aj Tew (Lab Resource Management System)</p>
+      <div class="cols">
+        <div>
+          <p class="k">Facilities (summary)</p>
+          <ul class="list">
+            <li>Lab workstations for coursework, Senior Project &amp; Lab KM</li>
+            <li>Student <b>computer rental</b> available (short-term)</li>
+            <li><b>Microsoft 365</b> &amp; <b>Google Workspace</b> licenses for students</li>
+            <li>Capacity, exact specs &amp; peripherals — see the inventory sheet</li>
+          </ul>
+        </div>
+        <div>
+          <p class="k">Booking &amp; use</p>
+          <div class="ev"><ul>
+            <li>Reserve through the programme / lab owner; priority for scheduled labs</li>
+            <li>Shared use outside class hours for project teams</li>
+            <li>Utilization tracked to plan capacity &amp; justify procurement (C7)</li>
+            <li>Report faults or missing equipment to the lab owner</li>
+          </ul></div>
+        </div>
+      </div>
+      <div class="src">
+        <span class="tag">C7 Facilities</span><span class="tag">Lab Resource Mgmt</span>
+      </div>
+      <div class="links">
+        <a class="lnk solid" href="#" data-link>Equipment Inventory (Sheet)</a>
+        <a class="lnk" href="#" data-link>Floor plan</a>
+        <a class="lnk" href="#" data-link>Booking / request</a>
+      </div>
+      <p class="lead" style="font-size:clamp(12px,1.5vw,13.5px);margin-top:12px;color:var(--ink-3)">
+        <span class="todo">Aj Tew: replace the three links above with the MFU-login inventory sheet, floor-plan file, and booking form. Keep serial numbers / asset values inside the login-gated sheet, not on this page.</span></p>
+    </div>
+  </div>
+
+  <!-- PROGRAMME & PLOs -->
+  <style>
+    .pk{font-family:ui-monospace,Menlo,monospace;font-weight:700;color:var(--accent);font-size:13px}
+    .dom{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:3px}
+    .plo-grp{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:18px 0 8px}
+  </style>
+  <div class="sec" id="programme-plos">
+    <details class="disc">
+      <summary>
+        <div>
+          <span class="eyebrow">Programme &amp; learning outcomes</span>
+          <span class="disc-h">PLOs — 2564 &amp; 2569 curricula</span>
+        </div>
+        <span class="disc-x"></span>
+      </summary>
+      <div class="disc-body">
+        <p class="lead" style="font-size:clamp(13px,1.7vw,15px);margin:8px 0 0">
+          Advisees follow one of two curricula: <b>Year 1 (cohort 2569)</b> → the <b>2569</b> curriculum (5 PLOs);
+          <b>Years 2–4 (cohorts 2566–2568)</b> → the <b>2564</b> curriculum (6 PLOs).
+          The numbering differs between versions — always check which curriculum your advisee is on.</p>
+
+        <p class="plo-grp">Curriculum 2569 · 5 PLOs · Year 1</p>
+        <div class="tablewrap"><table><thead><tr><th>PLO</th><th>Statement</th></tr></thead><tbody><tr><td style="white-space:nowrap"><span class="pk">PLO1</span></td><td>Analyze user requirements and evaluate technical options for designing software systems, based on standard practices and industry-context constraints.<div class="dom">Requirements & design</div></td></tr><tr><td style="white-space:nowrap"><span class="pk">PLO2</span></td><td>Develop quality software that keeps pace with changing technology according to the work context.<div class="dom">Quality development</div></td></tr><tr><td style="white-space:nowrap"><span class="pk">PLO3</span></td><td>Communicate effectively within teamwork in real-world contexts.<div class="dom">Teamwork & communication</div></td></tr><tr><td style="white-space:nowrap"><span class="pk">PLO4</span></td><td>Practice in accordance with the professional ethics of a software engineer.<div class="dom">Professional ethics</div></td></tr><tr><td style="white-space:nowrap"><span class="pk">PLO5</span></td><td>Demonstrate rapid self-transformation and flexibility in working with industry in the software-engineering context.<div class="dom">Adaptability</div></td></tr></tbody></table></div>
+
+        <p class="plo-grp">Curriculum 2564 · 6 PLOs · Years 2–4</p>
+        <div class="tablewrap"><table><thead><tr><th>PLO</th><th>Statement</th></tr></thead><tbody><tr><td style="white-space:nowrap"><span class="pk">PLO1</span></td><td>Demonstrate honesty, respect the privacy of others, and take responsibility with consideration for the public interest and professional responsibility.<div class="dom">Ethics</div></td></tr><tr><td style="white-space:nowrap"><span class="pk">PLO2</span></td><td>Discuss and connect key software technologies and methods, technology entrepreneurship, and emerging technologies with related disciplines under disruptive technologies.<div class="dom">Knowledge</div></td></tr><tr><td style="white-space:nowrap"><span class="pk">PLO3</span></td><td>Design software architecture or information-system structures by appropriately integrating software technologies and methods with related disciplines.<div class="dom">Cognitive</div></td></tr><tr><td style="white-space:nowrap"><span class="pk">PLO4</span></td><td>Demonstrate effective leadership and followership, and work collaboratively with others in a multicultural society.<div class="dom">Interpersonal</div></td></tr><tr><td style="white-space:nowrap"><span class="pk">PLO5</span></td><td>Apply numerical analysis skills, select appropriate software development toolsets, and communicate in English.<div class="dom">Numerical & comm.</div></td></tr><tr><td style="white-space:nowrap"><span class="pk">PLO6</span></td><td>Create software or information systems that keep pace with disruptive technologies and can be used for commercial benefit or social development.<div class="dom">Performance</div></td></tr></tbody></table></div>
+
+        <div class="links" style="margin-top:16px">
+          <a class="lnk solid" href="TQF2-SE-2569.pdf" target="_blank" rel="noopener">Full มคอ.2 — 2569 (PDF)</a>
+          <a class="lnk" href="TQF2-SE-2564.pdf" target="_blank" rel="noopener">Full มคอ.2 — 2564 (PDF)</a>
+          <a class="lnk" href="#tqf-directory">Course TQF directory ↓</a>
+        </div>
+        <p class="lead" style="font-size:clamp(12px,1.5vw,13.5px);margin-top:12px;color:var(--ink-3)">
+          English statements are the SAR translation; the full มคอ.2 (Thai, with sub-PLOs and CLO mapping) is linked above.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- COURSE TQF DIRECTORY -->
+  <style>
+    details.disc{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+    details.disc>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:14px;padding:20px 24px}
+    details.disc>summary::-webkit-details-marker{display:none}
+    details.disc .disc-h{font-size:clamp(20px,2.8vw,28px);font-weight:800;letter-spacing:-.02em;display:block;margin-top:4px}
+    details.disc .disc-x{margin-left:auto;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--ink-2);background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:6px 13px;white-space:nowrap}
+    details.disc[open] .disc-x::after{content:"− hide"}
+    details.disc:not([open]) .disc-x::after{content:"+ show"}
+    details.disc .disc-body{padding:0 24px 22px}
+    details.disc .grp{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:18px 0 8px}
+  </style>
+  <div class="sec" id="tqf-directory">
+    <details class="disc">
+      <summary>
+        <div>
+          <span class="eyebrow">Course TQF directory · AY2569 · Semester 1</span>
+          <span class="disc-h">Every course, one click to its TQF</span>
+        </div>
+        <span class="disc-x"></span>
+      </summary>
+      <div class="disc-body">
+        <p class="lead" style="font-size:clamp(13px,1.7vw,15px);margin:8px 0 0">
+          Filed TQF (มคอ.3) that open now on <code>tqf.mfu.ac.th</code>. Verified 25 Aug 2569.
+          Year 1 uses the <b>2569 curriculum</b>; Years 2–4 (earlier cohorts) use the <b>2564 curriculum</b> codes.
+          <span class="tag">SE</span> SE-owned · <span class="tag">GE</span> general/support.</p>
+
+        <p class="grp">Curriculum 2569 · Year 1</p>
+        <div class="tablewrap"><table><thead><tr><th>Code (→ TQF)</th><th>Course</th><th>Type</th></tr></thead><tbody><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/15031001" target="_blank" rel="noopener"><code>15031001</code></a></td><td>Introduction to Software Engineering</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/15011001" target="_blank" rel="noopener"><code>15011001</code></a></td><td>Computer Programming</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/10061001" target="_blank" rel="noopener"><code>10061001</code></a></td><td>English for Communication 1</td><td><span class="tag">GE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/24081001" target="_blank" rel="noopener"><code>24081001</code></a></td><td>Chinese 1</td><td><span class="tag">GE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/11062001" target="_blank" rel="noopener"><code>11062001</code></a></td><td>Probability and Statistics</td><td><span class="tag">GE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/16011001" target="_blank" rel="noopener"><code>16011001</code></a></td><td>Global Citizenship</td><td><span class="tag">GE</span></td></tr></tbody></table></div>
+
+        <p class="grp">Curriculum 2564 · Years 2–4</p>
+        <div class="tablewrap"><table><thead><tr><th>Code (→ TQF)</th><th>Course</th><th>Type</th></tr></thead><tbody><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1501116" target="_blank" rel="noopener"><code>1501116</code></a></td><td>Computer Programming</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1501206" target="_blank" rel="noopener"><code>1501206</code></a></td><td>Mathematics for Engineering 2</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1501208" target="_blank" rel="noopener"><code>1501208</code></a></td><td>Database Systems</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1501412" target="_blank" rel="noopener"><code>1501412</code></a></td><td>Machine Learning</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1305215" target="_blank" rel="noopener"><code>1305215</code></a></td><td>Web Application Development</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1305216" target="_blank" rel="noopener"><code>1305216</code></a></td><td>Mobile Application Development</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1305306" target="_blank" rel="noopener"><code>1305306</code></a></td><td>Software Project Management</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1305308" target="_blank" rel="noopener"><code>1305308</code></a></td><td>Platform Development</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1305310" target="_blank" rel="noopener"><code>1305310</code></a></td><td>Emerging Technology for Software Engineering</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1305311" target="_blank" rel="noopener"><code>1305311</code></a></td><td>Low-Code Application Development</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1305312" target="_blank" rel="noopener"><code>1305312</code></a></td><td>Software Business Entrepreneurship</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1305313" target="_blank" rel="noopener"><code>1305313</code></a></td><td>Intelligent Computing</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1305315" target="_blank" rel="noopener"><code>1305315</code></a></td><td>Software Security</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1305493" target="_blank" rel="noopener"><code>1305493</code></a></td><td>Software Engineering Case Studies</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1305498" target="_blank" rel="noopener"><code>1305498</code></a></td><td>Co-operative Education</td><td><span class="tag">SE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1006135" target="_blank" rel="noopener"><code>1006135</code></a></td><td>English for Communication 2</td><td><span class="tag">GE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1101105" target="_blank" rel="noopener"><code>1101105</code></a></td><td>Sciences and Mathematics All Around</td><td><span class="tag">GE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1106281" target="_blank" rel="noopener"><code>1106281</code></a></td><td>Probability and Statistics</td><td><span class="tag">GE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1301401" target="_blank" rel="noopener"><code>1301401</code></a></td><td>Business Data Visualization</td><td><span class="tag">GE</span></td></tr><tr><td><a href="https://tqf.mfu.ac.th/#/pdf/2569/1/1600104" target="_blank" rel="noopener"><code>1600104</code></a></td><td>Laws and Ethics for Information Technology</td><td><span class="tag">GE</span></td></tr></tbody></table></div>
+
+        <p class="lead" style="font-size:clamp(12.5px,1.6vw,14px);margin-top:12px;color:var(--ink-3)">
+          Only courses offered and filed for Semester 1 appear here. Semester 2 and not-yet-filed
+          courses will be added as the school files their TQF3.</p>
+      </div>
+    </details>
+  </div>
+
+  <footer>
+    <p><b>Data protection.</b> This handbook holds no personal data. All student records are handled under Thailand's PDPA —
+    collected with purpose, de-identified for analysis, access-restricted, and never published here.</p>
+    <p>SE Programme Faculty &amp; Advisor Handbook · v1.1 · Academic Year 2569 · Maintained by the Programme Coordinator,
+    School of Applied Digital Technology, Mae Fah Luang University.</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  document.getElementById('tg').addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var nextT=cur?(cur==='dark'?'light':'dark'):(matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark');
+    document.documentElement.setAttribute('data-theme',nextT);
+  });
+})();
+</script>
+</body>
+</html>
