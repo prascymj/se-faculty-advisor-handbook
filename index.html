@@ -539,6 +539,116 @@
     </details>
   </div>
 
+  <!-- ANNUAL PLAN TIMELINE -->
+  <style>
+    .tl{position:relative;margin-top:8px;padding-left:24px}
+    .tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
+    .tl .ph{position:relative;padding:0 0 20px 6px}
+    .tl .ph:last-child{padding-bottom:0}
+    .tl .ph::before{content:"";position:absolute;left:-24px;top:3px;width:13px;height:13px;border-radius:50%;
+      background:var(--accent);box-shadow:0 0 0 3px var(--paper)}
+    .tl .ph.p1::before{background:var(--p1)} .tl .ph.p2::before{background:var(--p2)}
+    .tl .ph.p3::before{background:var(--p3)} .tl .ph.p4::before{background:var(--p4)}
+    .tl .when{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+    .tl h4{margin:2px 0 3px;font-size:clamp(15.5px,2vw,18px);font-weight:750}
+    .tl p{margin:0;font-size:clamp(13px,1.7vw,14.5px);color:var(--ink-2)}
+    .tl .hot{color:var(--accent);font-weight:700}
+  </style>
+  <div class="sec" id="annual-plan">
+    <div class="sec-head">
+      <p class="eyebrow">Annual plan · AY2569</p>
+      <h2>The year at a glance</h2>
+      <p class="lead">Six phases from the programme improvement plan — what to run and when across the academic year.</p>
+    </div>
+    <div class="tl">
+      <div class="ph p4">
+        <div class="when">Phase 0 · Jul – early Aug 2569</div>
+        <h4><span class="hot">Prepare</span> — before the term opens</h4>
+        <p>Ready every template first: advising log, dropout forms, rubric v2 &amp; central SP form, advisor SOP, IDP/impact, lab &amp; procurement plan.</p>
+      </div>
+      <div class="ph p1">
+        <div class="when">Phase 1 · Aug 2569 · Term 1 opens</div>
+        <h4>Communicate &amp; start collecting</h4>
+        <p>Orientation: PLO ↔ mission. Begin the continuous logs — TQF3, dropout, advising, Lab KM.</p>
+      </div>
+      <div class="ph p2">
+        <div class="when">Phase 2 · Sep – Nov 2569</div>
+        <h4>Mid Term 1</h4>
+        <p>Advisory Board minutes; fix ME &amp; IRPM traceability; release midterm before the drop deadline; government-brief projects; Hackathon.</p>
+      </div>
+      <div class="ph p3">
+        <div class="when">Phase 3 · Nov 2569 · End Term 1</div>
+        <h4>Verify &amp; bank evidence</h4>
+        <p>Course verification (ทวนสอบ) + TQF5; workload &amp; post-training impact; move confirmed evidence to the submission set.</p>
+      </div>
+      <div class="ph p1">
+        <div class="when">Phase 4 · Jan – Apr 2570 · Term 2</div>
+        <h4>Assess &amp; measure PLO</h4>
+        <p>ME selection; employer site visits; Exit Exam and Senior Project scored as direct PLO-attainment evidence.</p>
+      </div>
+      <div class="ph p2">
+        <div class="when">Phase 5 · May – Jun 2570 · Year end</div>
+        <h4>Analyse &amp; write SAR</h4>
+        <p>Stakeholder surveys; root-cause analysis (dropout / late graduation / employability); soft-skill PLO2,3,6; close evidence → SAR.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EVIDENCE TABLE -->
+  <div class="sec" id="evidence">
+    <div class="sec-head">
+      <p class="eyebrow">Evidence quick-reference</p>
+      <h2>Every unit, where it is filed</h2>
+      <p class="lead">Granular evidence units, the criterion each supports, and how often to collect.</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Evidence unit</th><th>File where</th><th>Criterion</th><th>Cadence</th></tr></thead>
+        <tbody>
+          <tr><td>Advising session record (de-identified)</td><td><code>C6</code> advising log</td><td>C6</td><td>Every session</td></tr>
+          <tr><td>Early-warning entry (trigger→action→outcome)</td><td><code>C6</code> early-warning</td><td>C6, C8</td><td>As it occurs</td></tr>
+          <tr><td>Counselling / mental-health referral (coded)</td><td><code>C6</code> referral (secure)</td><td>C6</td><td>As it occurs</td></tr>
+          <tr><td>Signed academic request (add/drop, leave, W)</td><td>Secretary file</td><td>C4</td><td>Per request</td></tr>
+          <tr><td>IDP / TOR + review</td><td><code>C5</code> staff</td><td>C5</td><td>Yearly</td></tr>
+          <tr><td>Post-training impact log</td><td><code>C5</code> staff</td><td>C5, C3</td><td>Each term</td></tr>
+          <tr><td>Publication record</td><td><code>C5</code> staff</td><td>C5, C8</td><td>Ongoing</td></tr>
+          <tr><td>TQF3 with CLO→PLO mapping</td><td>School TQF3 repository</td><td>C2, C3</td><td>Start of term</td></tr>
+          <tr><td>Rubric v2 (sub-criteria) as distributed</td><td><code>C4</code> assessment</td><td>C4</td><td>Start of term</td></tr>
+          <tr><td>Rubric scores per CLO → attainment %</td><td><code>C4</code> / <code>C1</code></td><td>C1, C4</td><td>End of term</td></tr>
+          <tr><td>Exit Exam item → PLO map</td><td><code>C1</code> / <code>C8</code></td><td>C1, C8</td><td>March</td></tr>
+          <tr><td>Senior Project rubric → PLO map</td><td><code>C1</code> / <code>C4</code></td><td>C1, C4</td><td>End of SP</td></tr>
+          <tr><td>TQF5 + course verification (ทวนสอบ)</td><td><code>C4</code></td><td>C4</td><td>End of term</td></tr>
+          <tr><td>Dropout register entry + coded causes</td><td><code>C8</code> (de-identified)</td><td>C8</td><td>Per case</td></tr>
+          <tr><td>Site-visit report + employer evaluation</td><td><code>C1</code> / <code>C8</code></td><td>C1, C8</td><td>Feb / May</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- LINKS DIRECTORY -->
+  <div class="sec" id="links">
+    <div class="sec-head">
+      <p class="eyebrow">Links &amp; tools directory</p>
+      <h2>Where the data actually lives</h2>
+      <p class="lead">All tools open in the MFU Workspace / REG and require an MFU login. <span style="color:var(--p2);font-weight:600">Green cards</span> were added from the assessors’ recommendations — this year’s improvement set.
+        <span class="todo">Coordinator: replace each placeholder link (href="#") in the source with the real MFU URL.</span></p>
+    </div>
+    <div class="grid3">
+      <div class="c imp"><span class="kk">Advising</span><h4>Advising Log <span class="imptag">2026 improvement</span></h4><p>Record advising sessions &amp; agreed actions (de-identified).</p><a class="lnk" href="https://docs.google.com/forms/d/e/1FAIpQLSemcce9tjTF6cGCWcG5Y6R1k8x3ofKldnTqWyCseFU56ZNUVw/viewform" target="_blank" rel="noopener">Open</a></div>
+      <div class="c"><span class="kk">Monitoring</span><h4>REG Dashboard</h4><p>GPA, credits &amp; early-warning signals per advisee.</p><a class="lnk" href="#" data-link>Open</a></div>
+      <div class="c"><span class="kk">Well-being</span><h4>Counselling Referral</h4><p>Refer students to the Wellness / Counselling Center.</p><a class="lnk" href="#" data-link>Open</a></div>
+      <div class="c imp"><span class="kk">Staff</span><h4>IDP / TOR Form <span class="imptag">2026 improvement</span></h4><p>Set and review your annual development plan.</p><a class="lnk" href="https://docs.google.com/forms/d/e/1FAIpQLSfdJOXw91ogVyWf0aLqPr4rNeZAba4VlXRrAWMSou4Jlj5Qtg/viewform" target="_blank" rel="noopener">Open</a></div>
+      <div class="c imp"><span class="kk">Staff</span><h4>Training Impact Log <span class="imptag">2026 improvement</span></h4><p>Record what you gained and how you applied it.</p><a class="lnk" href="https://docs.google.com/forms/d/e/1FAIpQLSecrv3tfhB0LyHunM9MZmulVfwZYc6Hb__r8qzmHkdAG7FmsQ/viewform" target="_blank" rel="noopener">Open</a></div>
+      <div class="c"><span class="kk">Assessment</span><h4>Rubric Template</h4><p>Rubric with sub-criteria &amp; level descriptors.</p><a class="lnk" href="#" data-link>Open</a></div>
+      <div class="c"><span class="kk">Mapping</span><h4>CLO–PLO Matrix</h4><p>Map course CLOs to programme PLOs.</p><a class="lnk" href="#" data-link>Open</a></div>
+      <div class="c"><span class="kk">Course spec</span><h4>TQF3 / TQF5 Directory</h4><p>Every course’s TQF (มคอ.) — link per course below.</p><a class="lnk" href="#tqf-directory">Open</a></div>
+      <div class="c imp"><span class="kk">Dropout</span><h4>Dropout Exit Forms <span class="imptag">2026 improvement</span></h4><p>Two separate forms joined by student code: <b>Advisor</b> exit note (private) + <b>Student</b> voice (consent).</p><a class="lnk" href="#" data-link>Advisor form</a> <a class="lnk" href="#" data-link>Student form</a></div>
+      <div class="c imp"><span class="kk">Dropout</span><h4>Dropout Register <span class="imptag">2026 improvement</span></h4><p>De-identified case log with coded causes.</p><a class="lnk" href="#" data-link>Open</a></div>
+      <div class="c"><span class="kk">Internship</span><h4>Site-Visit / Employer Form</h4><p>Internship evaluation &amp; PLO feedback.</p><a class="lnk" href="#" data-link>Open</a></div>
+      <div class="c"><span class="kk">Reference</span><h4>Academic Calendar</h4><p>Add/drop, W, midterm &amp; exam deadlines.</p><a class="lnk" href="#" data-link>Open</a></div>
+    </div>
+  </div>
+
   <!-- SEMINAR TOPIC SELECTION SOP -->
   <div class="sec" id="seminar-topic-selection">
     <details class="disc">
@@ -651,116 +761,6 @@
       <span class="todo">Coordinator: replace the three placeholder links (href="#") with the MFU-login Topic Sheet, Bidding Form, and Proposal Template. Fill the confirm items in the full SOP before publishing to students.</span></p>
       </div>
     </details>
-  </div>
-
-  <!-- ANNUAL PLAN TIMELINE -->
-  <style>
-    .tl{position:relative;margin-top:8px;padding-left:24px}
-    .tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
-    .tl .ph{position:relative;padding:0 0 20px 6px}
-    .tl .ph:last-child{padding-bottom:0}
-    .tl .ph::before{content:"";position:absolute;left:-24px;top:3px;width:13px;height:13px;border-radius:50%;
-      background:var(--accent);box-shadow:0 0 0 3px var(--paper)}
-    .tl .ph.p1::before{background:var(--p1)} .tl .ph.p2::before{background:var(--p2)}
-    .tl .ph.p3::before{background:var(--p3)} .tl .ph.p4::before{background:var(--p4)}
-    .tl .when{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
-    .tl h4{margin:2px 0 3px;font-size:clamp(15.5px,2vw,18px);font-weight:750}
-    .tl p{margin:0;font-size:clamp(13px,1.7vw,14.5px);color:var(--ink-2)}
-    .tl .hot{color:var(--accent);font-weight:700}
-  </style>
-  <div class="sec" id="annual-plan">
-    <div class="sec-head">
-      <p class="eyebrow">Annual plan · AY2569</p>
-      <h2>The year at a glance</h2>
-      <p class="lead">Six phases from the programme improvement plan — what to run and when across the academic year.</p>
-    </div>
-    <div class="tl">
-      <div class="ph p4">
-        <div class="when">Phase 0 · Jul – early Aug 2569</div>
-        <h4><span class="hot">Prepare</span> — before the term opens</h4>
-        <p>Ready every template first: advising log, dropout forms, rubric v2 &amp; central SP form, advisor SOP, IDP/impact, lab &amp; procurement plan.</p>
-      </div>
-      <div class="ph p1">
-        <div class="when">Phase 1 · Aug 2569 · Term 1 opens</div>
-        <h4>Communicate &amp; start collecting</h4>
-        <p>Orientation: PLO ↔ mission. Begin the continuous logs — TQF3, dropout, advising, Lab KM.</p>
-      </div>
-      <div class="ph p2">
-        <div class="when">Phase 2 · Sep – Nov 2569</div>
-        <h4>Mid Term 1</h4>
-        <p>Advisory Board minutes; fix ME &amp; IRPM traceability; release midterm before the drop deadline; government-brief projects; Hackathon.</p>
-      </div>
-      <div class="ph p3">
-        <div class="when">Phase 3 · Nov 2569 · End Term 1</div>
-        <h4>Verify &amp; bank evidence</h4>
-        <p>Course verification (ทวนสอบ) + TQF5; workload &amp; post-training impact; move confirmed evidence to the submission set.</p>
-      </div>
-      <div class="ph p1">
-        <div class="when">Phase 4 · Jan – Apr 2570 · Term 2</div>
-        <h4>Assess &amp; measure PLO</h4>
-        <p>ME selection; employer site visits; Exit Exam and Senior Project scored as direct PLO-attainment evidence.</p>
-      </div>
-      <div class="ph p2">
-        <div class="when">Phase 5 · May – Jun 2570 · Year end</div>
-        <h4>Analyse &amp; write SAR</h4>
-        <p>Stakeholder surveys; root-cause analysis (dropout / late graduation / employability); soft-skill PLO2,3,6; close evidence → SAR.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- EVIDENCE TABLE -->
-  <div class="sec" id="evidence">
-    <div class="sec-head">
-      <p class="eyebrow">Evidence quick-reference</p>
-      <h2>Every unit, where it is filed</h2>
-      <p class="lead">Granular evidence units, the criterion each supports, and how often to collect.</p>
-    </div>
-    <div class="tablewrap">
-      <table>
-        <thead><tr><th>Evidence unit</th><th>File where</th><th>Criterion</th><th>Cadence</th></tr></thead>
-        <tbody>
-          <tr><td>Advising session record (de-identified)</td><td><code>C6</code> advising log</td><td>C6</td><td>Every session</td></tr>
-          <tr><td>Early-warning entry (trigger→action→outcome)</td><td><code>C6</code> early-warning</td><td>C6, C8</td><td>As it occurs</td></tr>
-          <tr><td>Counselling / mental-health referral (coded)</td><td><code>C6</code> referral (secure)</td><td>C6</td><td>As it occurs</td></tr>
-          <tr><td>Signed academic request (add/drop, leave, W)</td><td>Secretary file</td><td>C4</td><td>Per request</td></tr>
-          <tr><td>IDP / TOR + review</td><td><code>C5</code> staff</td><td>C5</td><td>Yearly</td></tr>
-          <tr><td>Post-training impact log</td><td><code>C5</code> staff</td><td>C5, C3</td><td>Each term</td></tr>
-          <tr><td>Publication record</td><td><code>C5</code> staff</td><td>C5, C8</td><td>Ongoing</td></tr>
-          <tr><td>TQF3 with CLO→PLO mapping</td><td>School TQF3 repository</td><td>C2, C3</td><td>Start of term</td></tr>
-          <tr><td>Rubric v2 (sub-criteria) as distributed</td><td><code>C4</code> assessment</td><td>C4</td><td>Start of term</td></tr>
-          <tr><td>Rubric scores per CLO → attainment %</td><td><code>C4</code> / <code>C1</code></td><td>C1, C4</td><td>End of term</td></tr>
-          <tr><td>Exit Exam item → PLO map</td><td><code>C1</code> / <code>C8</code></td><td>C1, C8</td><td>March</td></tr>
-          <tr><td>Senior Project rubric → PLO map</td><td><code>C1</code> / <code>C4</code></td><td>C1, C4</td><td>End of SP</td></tr>
-          <tr><td>TQF5 + course verification (ทวนสอบ)</td><td><code>C4</code></td><td>C4</td><td>End of term</td></tr>
-          <tr><td>Dropout register entry + coded causes</td><td><code>C8</code> (de-identified)</td><td>C8</td><td>Per case</td></tr>
-          <tr><td>Site-visit report + employer evaluation</td><td><code>C1</code> / <code>C8</code></td><td>C1, C8</td><td>Feb / May</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- LINKS DIRECTORY -->
-  <div class="sec" id="links">
-    <div class="sec-head">
-      <p class="eyebrow">Links &amp; tools directory</p>
-      <h2>Where the data actually lives</h2>
-      <p class="lead">All tools open in the MFU Workspace / REG and require an MFU login. <span style="color:var(--p2);font-weight:600">Green cards</span> were added from the assessors’ recommendations — this year’s improvement set.
-        <span class="todo">Coordinator: replace each placeholder link (href="#") in the source with the real MFU URL.</span></p>
-    </div>
-    <div class="grid3">
-      <div class="c imp"><span class="kk">Advising</span><h4>Advising Log <span class="imptag">2026 improvement</span></h4><p>Record advising sessions &amp; agreed actions (de-identified).</p><a class="lnk" href="https://docs.google.com/forms/d/e/1FAIpQLSemcce9tjTF6cGCWcG5Y6R1k8x3ofKldnTqWyCseFU56ZNUVw/viewform" target="_blank" rel="noopener">Open</a></div>
-      <div class="c"><span class="kk">Monitoring</span><h4>REG Dashboard</h4><p>GPA, credits &amp; early-warning signals per advisee.</p><a class="lnk" href="#" data-link>Open</a></div>
-      <div class="c"><span class="kk">Well-being</span><h4>Counselling Referral</h4><p>Refer students to the Wellness / Counselling Center.</p><a class="lnk" href="#" data-link>Open</a></div>
-      <div class="c imp"><span class="kk">Staff</span><h4>IDP / TOR Form <span class="imptag">2026 improvement</span></h4><p>Set and review your annual development plan.</p><a class="lnk" href="https://docs.google.com/forms/d/e/1FAIpQLSfdJOXw91ogVyWf0aLqPr4rNeZAba4VlXRrAWMSou4Jlj5Qtg/viewform" target="_blank" rel="noopener">Open</a></div>
-      <div class="c imp"><span class="kk">Staff</span><h4>Training Impact Log <span class="imptag">2026 improvement</span></h4><p>Record what you gained and how you applied it.</p><a class="lnk" href="https://docs.google.com/forms/d/e/1FAIpQLSecrv3tfhB0LyHunM9MZmulVfwZYc6Hb__r8qzmHkdAG7FmsQ/viewform" target="_blank" rel="noopener">Open</a></div>
-      <div class="c"><span class="kk">Assessment</span><h4>Rubric Template</h4><p>Rubric with sub-criteria &amp; level descriptors.</p><a class="lnk" href="#" data-link>Open</a></div>
-      <div class="c"><span class="kk">Mapping</span><h4>CLO–PLO Matrix</h4><p>Map course CLOs to programme PLOs.</p><a class="lnk" href="#" data-link>Open</a></div>
-      <div class="c"><span class="kk">Course spec</span><h4>TQF3 / TQF5 Directory</h4><p>Every course’s TQF (มคอ.) — link per course below.</p><a class="lnk" href="#tqf-directory">Open</a></div>
-      <div class="c imp"><span class="kk">Dropout</span><h4>Dropout Exit Forms <span class="imptag">2026 improvement</span></h4><p>Two separate forms joined by student code: <b>Advisor</b> exit note (private) + <b>Student</b> voice (consent).</p><a class="lnk" href="#" data-link>Advisor form</a> <a class="lnk" href="#" data-link>Student form</a></div>
-      <div class="c imp"><span class="kk">Dropout</span><h4>Dropout Register <span class="imptag">2026 improvement</span></h4><p>De-identified case log with coded causes.</p><a class="lnk" href="#" data-link>Open</a></div>
-      <div class="c"><span class="kk">Internship</span><h4>Site-Visit / Employer Form</h4><p>Internship evaluation &amp; PLO feedback.</p><a class="lnk" href="#" data-link>Open</a></div>
-      <div class="c"><span class="kk">Reference</span><h4>Academic Calendar</h4><p>Add/drop, W, midterm &amp; exam deadlines.</p><a class="lnk" href="#" data-link>Open</a></div>
-    </div>
   </div>
 
   <!-- SE LAB & FACILITIES -->
