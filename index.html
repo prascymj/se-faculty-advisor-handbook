@@ -182,8 +182,39 @@
     Never place student names, IDs, cases, grades, or system passwords here. Handle all personal data under <b>PDPA</b> — de-identify for analysis.
   </div>
 
+  <!-- QUICKNAV -->
+  <style>
+    .toc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:8px}
+    .toc-col{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow)}
+    .toc-k{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px}
+    .toc-col a{font-size:13.5px;color:var(--ink-2);line-height:1.35}
+    .toc-col a:hover{color:var(--accent)}
+    @media (max-width:760px){.toc-grid{grid-template-columns:1fr 1fr}}
+  </style>
+  <nav class="sec" id="toc" aria-label="On this page" style="margin-top:34px">
+    <p class="eyebrow" style="margin:0">On this page</p>
+    <div class="toc-grid">
+      <div class="toc-col"><span class="toc-k">Start here</span>
+        <a href="#principles">Working principles</a></div>
+      <div class="toc-col"><span class="toc-k">What you do</span>
+        <a href="#responsibilities">Core responsibilities</a>
+        <a href="#scenarios">Advising scenarios</a>
+        <a href="#seminar-topic-selection">Seminar topic selection</a></div>
+      <div class="toc-col"><span class="toc-k">When</span>
+        <a href="#annual-plan">The year at a glance</a></div>
+      <div class="toc-col"><span class="toc-k">Records &amp; tools</span>
+        <a href="#evidence">Evidence quick-reference</a>
+        <a href="#links">Links &amp; tools</a>
+        <a href="#se-lab">SE lab &amp; facilities</a></div>
+      <div class="toc-col"><span class="toc-k">Reference</span>
+        <a href="#programme-plos">Programme &amp; PLOs</a>
+        <a href="#plo-map">PLO &times; Course map</a>
+        <a href="#tqf-directory">Course TQF directory</a></div>
+    </div>
+  </nav>
+
   <!-- PRINCIPLES -->
-  <div class="sec">
+  <div class="sec" id="principles">
     <div class="grid4 prin">
       <div class="c"><span class="kk">Principle 01</span><h4>Collect as you go</h4><p>Capture evidence when the event happens — not at year-end.</p></div>
       <div class="c"><span class="kk">Principle 02</span><h4>Stay traceable</h4><p>File + date + source + which AUN-QA criterion it supports.</p></div>
@@ -192,63 +223,8 @@
     </div>
   </div>
 
-  <!-- ANNUAL PLAN TIMELINE -->
-  <style>
-    .tl{position:relative;margin-top:8px;padding-left:24px}
-    .tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
-    .tl .ph{position:relative;padding:0 0 20px 6px}
-    .tl .ph:last-child{padding-bottom:0}
-    .tl .ph::before{content:"";position:absolute;left:-24px;top:3px;width:13px;height:13px;border-radius:50%;
-      background:var(--accent);box-shadow:0 0 0 3px var(--paper)}
-    .tl .ph.p1::before{background:var(--p1)} .tl .ph.p2::before{background:var(--p2)}
-    .tl .ph.p3::before{background:var(--p3)} .tl .ph.p4::before{background:var(--p4)}
-    .tl .when{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
-    .tl h4{margin:2px 0 3px;font-size:clamp(15.5px,2vw,18px);font-weight:750}
-    .tl p{margin:0;font-size:clamp(13px,1.7vw,14.5px);color:var(--ink-2)}
-    .tl .hot{color:var(--accent);font-weight:700}
-  </style>
-  <div class="sec">
-    <div class="sec-head">
-      <p class="eyebrow">Annual plan · AY2569</p>
-      <h2>The year at a glance</h2>
-      <p class="lead">Six phases from the programme improvement plan — what to run and when across the academic year.</p>
-    </div>
-    <div class="tl">
-      <div class="ph p4">
-        <div class="when">Phase 0 · Jul – early Aug 2569</div>
-        <h4><span class="hot">Prepare</span> — before the term opens</h4>
-        <p>Ready every template first: advising log, dropout forms, rubric v2 &amp; central SP form, advisor SOP, IDP/impact, lab &amp; procurement plan.</p>
-      </div>
-      <div class="ph p1">
-        <div class="when">Phase 1 · Aug 2569 · Term 1 opens</div>
-        <h4>Communicate &amp; start collecting</h4>
-        <p>Orientation: PLO ↔ mission. Begin the continuous logs — TQF3, dropout, advising, Lab KM.</p>
-      </div>
-      <div class="ph p2">
-        <div class="when">Phase 2 · Sep – Nov 2569</div>
-        <h4>Mid Term 1</h4>
-        <p>Advisory Board minutes; fix ME &amp; IRPM traceability; release midterm before the drop deadline; government-brief projects; Hackathon.</p>
-      </div>
-      <div class="ph p3">
-        <div class="when">Phase 3 · Nov 2569 · End Term 1</div>
-        <h4>Verify &amp; bank evidence</h4>
-        <p>Course verification (ทวนสอบ) + TQF5; workload &amp; post-training impact; move confirmed evidence to the submission set.</p>
-      </div>
-      <div class="ph p1">
-        <div class="when">Phase 4 · Jan – Apr 2570 · Term 2</div>
-        <h4>Assess &amp; measure PLO</h4>
-        <p>ME selection; employer site visits; Exit Exam and Senior Project scored as direct PLO-attainment evidence.</p>
-      </div>
-      <div class="ph p2">
-        <div class="when">Phase 5 · May – Jun 2570 · Year end</div>
-        <h4>Analyse &amp; write SAR</h4>
-        <p>Stakeholder surveys; root-cause analysis (dropout / late graduation / employability); soft-skill PLO2,3,6; close evidence → SAR.</p>
-      </div>
-    </div>
-  </div>
-
   <!-- RESPONSIBILITIES -->
-  <div class="sec">
+  <div class="sec" id="responsibilities">
     <div class="sec-head">
       <p class="eyebrow">Four core responsibilities</p>
       <h2>What you own as programme faculty</h2>
@@ -373,7 +349,7 @@
         <p class="num">Responsibility 04</p>
         <h3>Student Scenarios Playbook</h3>
         <p class="role">What to do — and what to record — case by case</p>
-        <p class="lead" style="font-size:clamp(13.5px,1.7vw,15px);margin-top:12px">Nine standard cases below, each with the steps, the form to use, the evidence to keep, and PDPA notes — so every advisor handles them consistently.</p>
+        <p class="lead" style="font-size:clamp(13.5px,1.7vw,15px);margin-top:12px">Ten standard cases below, each with the steps, the form to use, the evidence to keep, and PDPA notes — so every advisor handles them consistently.</p>
         <div class="src">
           <span class="tag">C6</span><span class="tag">C4</span><span class="tag">C8</span>
           <a class="lnk" href="#scenarios" style="margin-left:auto">Go to scenarios ↓</a>
@@ -445,7 +421,19 @@
     </details>
 
     <details class="scn">
-      <summary><span class="st">06</span><span class="sh">Mental-health concern</span><span class="stag">C6 · well-being</span></summary>
+      <summary><span class="st">06</span><span class="sh">Reinstatement of student status (คืนสภาพ)</span><span class="stag">C6 + C8 · re-entry</span></summary>
+      <div class="scn-body">
+        <div class="step"><span class="n">1</span><div>Clarify why status lapsed — resignation, low-GPA dismissal (retirement), or failure to register / maintain status — and whether the student is <b>eligible</b> to apply for reinstatement under MFU regulation.</div></div>
+        <div class="step"><span class="n">2</span><div>Check the <b>reinstatement window &amp; deadline</b> and confirm the <b>remaining study time</b> still fits the maximum programme duration (≤ 2× / ≤ 8 years).</div></div>
+        <div class="step"><span class="n">3</span><div>Guide the request: reinstatement form → <b>advisor endorsement</b> → school / dean → Registrar; ensure any <b>outstanding fees</b> are settled.</div></div>
+        <div class="step"><span class="n">4</span><div>Rebuild a realistic <b>study plan</b> for the remaining credits; confirm the <b>curriculum version</b> the student returns under (2564 vs 2569) and map equivalent courses.</div></div>
+        <div class="step"><span class="n">5</span><div>On return, treat the first term as <b>at-risk</b>: set check-ins and early-warning monitoring.</div></div>
+        <div class="flag care"><span class="k">Keep</span>Reinstatement record (reason status lapsed + agreed study plan + follow-up). A successful reinstatement is a <b>retention win</b> — log it distinctly from dropout in the C8 analysis.</div>
+      </div>
+    </details>
+
+    <details class="scn">
+      <summary><span class="st">07</span><span class="sh">Mental-health concern</span><span class="stag">C6 · well-being</span></summary>
       <div class="scn-body">
         <div class="step"><span class="n">1</span><div>Listen without judging; do not attempt to diagnose or counsel beyond your role.</div></div>
         <div class="step"><span class="n">2</span><div><b>Refer</b> to the University Counselling / Wellness Center promptly; share the contact with the student.</div></div>
@@ -455,7 +443,7 @@
     </details>
 
     <details class="scn">
-      <summary><span class="st">07</span><span class="sh">Grade appeal / grievance</span><span class="stag">C4 · fairness</span></summary>
+      <summary><span class="st">08</span><span class="sh">Grade appeal / grievance</span><span class="stag">C4 · fairness</span></summary>
       <div class="scn-body">
         <div class="step"><span class="n">1</span><div>Point the student to the rubric and grade-release evidence; explain the basis.</div></div>
         <div class="step"><span class="n">2</span><div>If unresolved, route to the formal appeal channel per University regulation.</div></div>
@@ -465,7 +453,7 @@
     </details>
 
     <details class="scn">
-      <summary><span class="st">08</span><span class="sh">Internship / co-op issue</span><span class="stag">C1 + C8 · workplace</span></summary>
+      <summary><span class="st">09</span><span class="sh">Internship / co-op issue</span><span class="stag">C1 + C8 · workplace</span></summary>
       <div class="scn-body">
         <div class="step"><span class="n">1</span><div>Coordinate with the site supervisor; clarify expectations and PLO-linked assessment.</div></div>
         <div class="step"><span class="n">2</span><div>Conduct the site visit; collect the employer evaluation and student reflection.</div></div>
@@ -489,7 +477,7 @@
     </details>
 
     <details class="scn">
-      <summary><span class="st">09</span><span class="sh">Change of major / transfer</span><span class="stag">C2 + C8 · retention</span></summary>
+      <summary><span class="st">10</span><span class="sh">Change of major / transfer</span><span class="stag">C2 + C8 · retention</span></summary>
       <div class="scn-body">
         <div class="step"><span class="n">1</span><div>Understand the motivation (fit, interest, opportunity elsewhere).</div></div>
         <div class="step"><span class="n">2</span><div>Advise on credit transfer and process; complete the required forms.</div></div>
@@ -499,8 +487,170 @@
     </details>
   </div>
 
+  <!-- SEMINAR TOPIC SELECTION SOP -->
+  <div class="sec" id="seminar-topic-selection">
+    <div class="sec-head">
+      <p class="eyebrow">SOP · Seminar → Senior Project</p>
+      <h2>Seminar topic selection</h2>
+      <p class="lead">How Seminar topics are <b>sourced, pitched, chosen and matched</b> — and how the topic and advisor carry forward into Senior Project 1 → 2. A <b>supply-driven</b> model: faculty source real topics; students express ranked preferences; the course team matches.</p>
+    </div>
+
+    <div class="facts" style="margin-bottom:18px">
+      <span class="chip">Course <b>1305392</b> · Seminar in Software Engineering</span>
+      <span class="chip">Curriculum <b>2564</b> · Year 3 (cohorts 2566–2568)</span>
+      <span class="chip">Selection unit <b>Group (≤4)</b></span>
+      <span class="chip hot">Carries into Senior Project 1 → 2</span>
+    </div>
+
+    <!-- 8-stage flow reusing the timeline component -->
+    <div class="tl">
+      <div class="ph p1">
+        <div class="when">Stage 1 · Course team</div>
+        <h4>Source topics</h4>
+        <p>Collect from three channels: <b>industry / MoU partners</b>, <b>university units</b>, and <b>faculty research</b>. Every topic names a stakeholder.</p>
+      </div>
+      <div class="ph p1">
+        <div class="when">Stage 2 · Course team + coordinator</div>
+        <h4>Curate the topic pool</h4>
+        <p>Record per topic: stakeholder, title, detail, <b>accepted students/group</b>, advisor, Pitching Day slot. Publish topic sheet + matching rules + deadline <b>before</b> Pitching Day.</p>
+      </div>
+      <div class="ph p2">
+        <div class="when">Stage 3 · All students attend</div>
+        <h4>Pitching Day</h4>
+        <p>Each topic pitched (scope, outcome, skills needed). Pitch materials archived as evidence.</p>
+      </div>
+      <div class="ph p2">
+        <div class="when">Stage 4 · Students (groups)</div>
+        <h4>Group bidding</h4>
+        <p>Each group (≤4) submits the bidding form: members, preferred advisor, and <b>≥3 ranked topics</b> (form allows up to 4), each with an <b>Expression of Interest</b>.</p>
+      </div>
+      <div class="ph p3">
+        <div class="when">Stage 5 · Course team · coordinator chairs</div>
+        <h4>Matching</h4>
+        <p>Apply the <b>published</b> rules: honour highest available preference; on oversubscription rank by Expression of Interest + relevant skills; respect topic capacity and advisor load.</p>
+      </div>
+      <div class="ph p3">
+        <div class="when">Stage 6 · Coordinator sign-off</div>
+        <h4>Announcement</h4>
+        <p>Officially announce <b>topic + advisor per group</b>. This locks the assignment.</p>
+      </div>
+      <div class="ph p4">
+        <div class="when">Stage 7 · Groups + advisors</div>
+        <h4>Execution</h4>
+        <p>Seminar work begins under the advisor (literature study, scoping, proposal) using the Research Proposal Template.</p>
+      </div>
+      <div class="ph p4">
+        <div class="when">Stage 8 · Continuity</div>
+        <h4><span class="hot">Senior Project 1 → 2</span></h4>
+        <p>Topic and advisor carry forward into Senior Project 1 (plan, analysis, design, prototype) and Senior Project 2 (full build, QA, evaluation).</p>
+      </div>
+    </div>
+
+    <!-- Two lanes -->
+    <div class="stack" style="margin-top:22px">
+      <div class="cols" style="margin-top:0">
+        <div class="box a1">
+          <p class="num">Student lane</p>
+          <h3 style="font-size:clamp(17px,2.3vw,22px)">What groups do</h3>
+          <ul class="list" style="margin-top:12px">
+            <li><b>Form your group early</b> (≤4) — mix your skills.</li>
+            <li><b>Attend every pitch</b> — you can only bid on topics you understood.</li>
+            <li><b>Rank ≥3 topics</b>; put your genuine first choice first.</li>
+            <li>Write a <b>strong Expression of Interest</b> for each (skills, prior work, motivation) — this decides ties.</li>
+            <li><b>Submit before the deadline</b>; late/incomplete bids risk leftover topics.</li>
+            <li>Meet your advisor after the announcement to agree scope.</li>
+          </ul>
+        </div>
+        <div class="box a2">
+          <p class="num">Advisor lane</p>
+          <h3 style="font-size:clamp(17px,2.3vw,22px)">What advisors do</h3>
+          <ul class="list" style="margin-top:12px">
+            <li><b>Contribute topics</b> from your research or partner needs, with clear scope and expected outcome.</li>
+            <li><b>Declare capacity</b> — how many groups you can supervise.</li>
+            <li><b>Pitch clearly</b> on Pitching Day: the problem, what "done" looks like, skills needed.</li>
+            <li><b>Support matching</b> — review Expressions of Interest for groups requesting your topic.</li>
+            <li>Hold a <b>kickoff</b> with the assigned group; set the proposal timeline.</li>
+            <li>Shape scope so it <b>extends naturally into Senior Project 1 → 2</b>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="flag pdpa" style="margin-top:16px">
+      <span class="k">Publish before Stage 3 · coordinator to confirm</span>
+      <b>Matching rules</b> (tie-break basis), <b>capacity per topic</b> and <b>max groups per advisor</b>, the <b>fallback</b> when a group gets none of its choices, and the <b>timeline</b> (Pitching Day, bidding deadline, announcement) must be published to students before Pitching Day.
+    </div>
+
+    <div class="src">
+      <span class="tag">C1 · 1.5 PLO via SP</span><span class="tag">C2 · 2.5 continuity</span><span class="tag">C3 · 3.3/3.4 T&amp;L</span><span class="tag">C4 · 4.3 fair assessment</span><span class="tag">C8 · 8.4 stakeholder engagement</span>
+    </div>
+    <div class="links">
+      <a class="lnk solid" href="Seminar-Topic-Selection-SOP.md" target="_blank" rel="noopener">Full SOP (Markdown)</a>
+      <a class="lnk" href="#" data-link>Topic Sheet</a>
+      <a class="lnk" href="#" data-link>Bidding Form</a>
+      <a class="lnk" href="#" data-link>Research Proposal Template</a>
+    </div>
+    <p class="lead" style="font-size:clamp(12px,1.5vw,13.5px);margin-top:12px;color:var(--ink-3)">
+      <span class="todo">Coordinator: replace the three placeholder links (href="#") with the MFU-login Topic Sheet, Bidding Form, and Proposal Template. Fill the confirm items in the full SOP before publishing to students.</span></p>
+  </div>
+
+  <!-- ANNUAL PLAN TIMELINE -->
+  <style>
+    .tl{position:relative;margin-top:8px;padding-left:24px}
+    .tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
+    .tl .ph{position:relative;padding:0 0 20px 6px}
+    .tl .ph:last-child{padding-bottom:0}
+    .tl .ph::before{content:"";position:absolute;left:-24px;top:3px;width:13px;height:13px;border-radius:50%;
+      background:var(--accent);box-shadow:0 0 0 3px var(--paper)}
+    .tl .ph.p1::before{background:var(--p1)} .tl .ph.p2::before{background:var(--p2)}
+    .tl .ph.p3::before{background:var(--p3)} .tl .ph.p4::before{background:var(--p4)}
+    .tl .when{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+    .tl h4{margin:2px 0 3px;font-size:clamp(15.5px,2vw,18px);font-weight:750}
+    .tl p{margin:0;font-size:clamp(13px,1.7vw,14.5px);color:var(--ink-2)}
+    .tl .hot{color:var(--accent);font-weight:700}
+  </style>
+  <div class="sec" id="annual-plan">
+    <div class="sec-head">
+      <p class="eyebrow">Annual plan · AY2569</p>
+      <h2>The year at a glance</h2>
+      <p class="lead">Six phases from the programme improvement plan — what to run and when across the academic year.</p>
+    </div>
+    <div class="tl">
+      <div class="ph p4">
+        <div class="when">Phase 0 · Jul – early Aug 2569</div>
+        <h4><span class="hot">Prepare</span> — before the term opens</h4>
+        <p>Ready every template first: advising log, dropout forms, rubric v2 &amp; central SP form, advisor SOP, IDP/impact, lab &amp; procurement plan.</p>
+      </div>
+      <div class="ph p1">
+        <div class="when">Phase 1 · Aug 2569 · Term 1 opens</div>
+        <h4>Communicate &amp; start collecting</h4>
+        <p>Orientation: PLO ↔ mission. Begin the continuous logs — TQF3, dropout, advising, Lab KM.</p>
+      </div>
+      <div class="ph p2">
+        <div class="when">Phase 2 · Sep – Nov 2569</div>
+        <h4>Mid Term 1</h4>
+        <p>Advisory Board minutes; fix ME &amp; IRPM traceability; release midterm before the drop deadline; government-brief projects; Hackathon.</p>
+      </div>
+      <div class="ph p3">
+        <div class="when">Phase 3 · Nov 2569 · End Term 1</div>
+        <h4>Verify &amp; bank evidence</h4>
+        <p>Course verification (ทวนสอบ) + TQF5; workload &amp; post-training impact; move confirmed evidence to the submission set.</p>
+      </div>
+      <div class="ph p1">
+        <div class="when">Phase 4 · Jan – Apr 2570 · Term 2</div>
+        <h4>Assess &amp; measure PLO</h4>
+        <p>ME selection; employer site visits; Exit Exam and Senior Project scored as direct PLO-attainment evidence.</p>
+      </div>
+      <div class="ph p2">
+        <div class="when">Phase 5 · May – Jun 2570 · Year end</div>
+        <h4>Analyse &amp; write SAR</h4>
+        <p>Stakeholder surveys; root-cause analysis (dropout / late graduation / employability); soft-skill PLO2,3,6; close evidence → SAR.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- EVIDENCE TABLE -->
-  <div class="sec">
+  <div class="sec" id="evidence">
     <div class="sec-head">
       <p class="eyebrow">Evidence quick-reference</p>
       <h2>Every unit, where it is filed</h2>
@@ -531,7 +681,7 @@
   </div>
 
   <!-- LINKS DIRECTORY -->
-  <div class="sec">
+  <div class="sec" id="links">
     <div class="sec-head">
       <p class="eyebrow">Links &amp; tools directory</p>
       <h2>Where the data actually lives</h2>
