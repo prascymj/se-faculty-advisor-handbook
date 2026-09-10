@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stakeholder Assessment Rubric — Seminar → Senior Project</title>
+<style>
+  :root{
+    --paper:#F3F4F7; --card:#FFFFFF; --ink:#141B24; --ink-2:#3A4655; --ink-3:#6A7686;
+    --line:#DCE0E7; --line-2:#E9ECF1;
+    --p1:#3E7CB1; --p2:#2A9D8F; --p3:#E1972B; --p4:#D9542B;
+    --accent:var(--p1); --accent-soft:#E8F0F7;
+    --good:#2A9D8F; --warn:#E1972B; --stop:#C6402A; --focus:#D9542B; --focus-soft:#FBEAE2;
+    --shadow:0 1px 2px rgba(20,27,36,.05),0 10px 30px rgba(20,27,36,.07);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0E141B; --card:#161F2A; --ink:#EAEEF4; --ink-2:#AEB9C7; --ink-3:#7C8797;
+      --line:#26313E; --line-2:#1E2733; --p1:#5B9BD1; --p2:#3FB9AA; --p3:#EFB44A; --p4:#EE7350;
+      --accent-soft:#152230; --focus-soft:#33211a; --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0E141B; --card:#161F2A; --ink:#EAEEF4; --ink-2:#AEB9C7; --ink-3:#7C8797;
+    --line:#26313E; --line-2:#1E2733; --p1:#5B9BD1; --p2:#3FB9AA; --p3:#EFB44A; --p4:#EE7350;
+    --accent-soft:#152230; --focus-soft:#33211a; --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.4);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,"Noto Sans Thai",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  .wrap{max-width:940px;margin:0 auto;padding:70px 22px 90px}
+  .bar-top{position:fixed;top:14px;left:18px;right:18px;display:flex;align-items:center;justify-content:space-between;z-index:30;pointer-events:none}
+  .bar-top .code{pointer-events:auto;font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;color:#fff;background:var(--ink);padding:5px 10px;border-radius:6px}
+  .bar-top .btns{pointer-events:auto;display:flex;gap:8px}
+  .bar-top button{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:20px;cursor:pointer}
+  .bar-top button:hover{border-color:var(--ink-3)}
+
+  .eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin:0}
+  h1{font-size:clamp(24px,4vw,36px);line-height:1.08;letter-spacing:-.02em;font-weight:800;margin:6px 0 0}
+  .lead{font-size:clamp(14px,1.9vw,16px);color:var(--ink-2);max-width:74ch;margin:10px 0 0}
+  .lead b{color:var(--ink)}
+  .hero{border-left:4px solid var(--accent);padding-left:20px}
+
+  .note{margin:20px 0 0;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:12px;padding:13px 16px;font-size:13px;color:var(--ink-2)}
+  .note b{color:var(--ink)}
+  .note .k{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--warn);display:block;margin-bottom:4px}
+
+  .sec{margin-top:30px}
+  .sec-k{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+
+  /* meta form */
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow)}
+  .fld{display:flex;flex-direction:column;gap:5px}
+  .fld label{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  .fld input,.fld select{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+  .fld input:focus,.fld select:focus{outline:none;border-color:var(--accent)}
+
+  /* stage guidance */
+  .stagebox{margin-top:14px;background:var(--accent-soft);border:1px solid var(--line);border-radius:12px;padding:13px 16px;font-size:13.5px;color:var(--ink-2)}
+  .stagebox b{color:var(--ink)}
+  .stagebox .st{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
+
+  /* criterion cards */
+  .crit{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);margin-top:14px}
+  .crit.focus{border-color:color-mix(in srgb,var(--focus) 45%,var(--line));background:color-mix(in srgb,var(--focus) 5%,var(--card))}
+  .crit .top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .plo{font-family:ui-monospace,Menlo,monospace;font-size:11px;font-weight:700;letter-spacing:.04em;color:#fff;border-radius:6px;padding:2px 8px}
+  .plo.p1{background:var(--p1)} .plo.p2{background:var(--p2)} .plo.p3{background:var(--p3)} .plo.p4{background:var(--p4)}
+  .crit h3{margin:0;font-size:clamp(16px,2.2vw,19px);font-weight:750;letter-spacing:-.01em}
+  .prio{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--focus);border:1px solid color-mix(in srgb,var(--focus) 45%,var(--line));border-radius:6px;padding:2px 7px}
+  .crit .desc{font-size:13.5px;color:var(--ink-2);margin:8px 0 0}
+  .anchors{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0 0;font-size:11.5px;color:var(--ink-3)}
+  .anchors div{background:var(--paper);border:1px solid var(--line-2);border-radius:8px;padding:7px 9px}
+  .anchors b{color:var(--ink-2);font-weight:700}
+
+  .scale{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0 0;align-items:center}
+  .scale .opt{position:relative}
+  .scale input{position:absolute;opacity:0;width:0;height:0}
+  .scale label{display:inline-grid;place-items:center;min-width:42px;height:40px;border:1px solid var(--line);border-radius:9px;background:var(--paper);font-weight:700;font-size:15px;color:var(--ink-2);cursor:pointer}
+  .scale label small{display:block;font-family:ui-monospace,Menlo,monospace;font-size:8.5px;font-weight:600;letter-spacing:.02em;color:var(--ink-3);text-transform:uppercase;margin-top:-2px}
+  .scale input:checked + label{background:var(--accent);border-color:var(--accent);color:#fff}
+  .scale input:checked + label small{color:rgba(255,255,255,.85)}
+  .scale input:focus-visible + label{outline:2px solid var(--accent);outline-offset:2px}
+  .scale .na label{min-width:auto;padding:0 12px;font-size:12px;font-weight:600}
+  .cmt{margin-top:11px;width:100%;font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 10px;resize:vertical;min-height:40px}
+  .cmt:focus{outline:none;border-color:var(--accent)}
+
+  /* overall */
+  .overall{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);margin-top:14px}
+  .overall .fld{margin-top:12px}
+  .overall textarea{font:inherit;font-size:13.5px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:9px 11px;resize:vertical;min-height:52px;width:100%}
+  .yn{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .yn label{font-size:13px;color:var(--ink-2);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer}
+  .yn input{margin-right:7px}
+
+  /* sticky score */
+  .scorebar{position:sticky;bottom:0;margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);
+    padding:14px 18px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .scorebar .big{font-size:26px;font-weight:800;line-height:1}
+  .scorebar .lbl{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  .scorebar .unit{font-size:14px;color:var(--ink-3);font-weight:600}
+  .scorebar .focuschip{background:var(--focus-soft);border:1px solid color-mix(in srgb,var(--focus) 40%,var(--line));border-radius:10px;padding:7px 12px}
+  .scorebar .focuschip .big{color:var(--focus);font-size:20px}
+  .scorebar .actions{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+  .scorebar button{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;font-weight:700;border-radius:9px;padding:9px 15px;cursor:pointer;border:1px solid var(--ink)}
+  .scorebar .solid{background:var(--ink);color:#fff}
+  .scorebar .ghost{background:var(--card);color:var(--ink);border-color:var(--line)}
+  .scorebar button:hover{border-color:var(--accent)}
+
+  footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
+  footer b{color:var(--ink-2)}
+
+  @media (max-width:720px){ .meta{grid-template-columns:1fr} .anchors{grid-template-columns:1fr} }
+
+  /* print */
+  @media print{
+    body{background:#fff;color:#000}
+    .bar-top,.scorebar .actions,.no-print{display:none !important}
+    .wrap{padding:0;max-width:none}
+    .crit,.overall,.meta,.stagebox,.note,.scorebar{box-shadow:none;break-inside:avoid}
+    .scorebar{position:static;border:2px solid #000}
+    .scale label{border-color:#888}
+    .scale input:checked + label{background:#000;color:#fff;border-color:#000;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .plo,.scale input:checked + label{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar-top">
+  <span class="code">SE PROGRAMME</span>
+  <div class="btns">
+    <button id="print">Print / PDF</button>
+    <button id="tg">theme</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Stakeholder Assessment Rubric · แบบประเมินโดยผู้มีส่วนได้ส่วนเสีย</p>
+    <h1>Seminar → Senior Project — stakeholder score sheet</h1>
+    <p class="lead">For <b>industry partners, topic owners and external stakeholders</b> to assess a student team against the programme's <b>six Programme Learning Outcomes (PLOs, curriculum 2564)</b>. Usable at each stage — <b>Seminar</b>, <b>Senior Project 1</b>, and <b>Senior Project 2</b> — so growth is comparable across the year. B.Eng. Software Engineering, School of Applied Digital Technology, MFU.</p>
+  </header>
+
+  <div class="note no-print">
+    <span class="k">How to use · where your score goes</span>
+    Score each PLO on a <b>1–5</b> scale (<b>N/A</b> if you cannot judge it at this stage) — the totals update live. When done, choose one:
+    <b>Submit to coordinator</b> (sends the result to the programme's secure Google Sheet), or <b>Copy summary</b> / <b>Print&nbsp;/&nbsp;PDF</b> to return it by hand or email.
+    Your draft stays on this device until you submit or reset; nothing else is uploaded. Handle data under <b>PDPA</b> — refer to the <b>team/topic</b>, not students' personal data. The coordinator files each result in the <b>SP Stakeholder Assessment</b> sheet and as evidence under AUN-QA C4 / C8.
+  </div>
+
+  <!-- META -->
+  <div class="sec">
+    <p class="sec-k">1 · What you are assessing</p>
+    <div class="meta">
+      <div class="fld"><label>Team / Group</label><input id="m_team" placeholder="e.g. Group 7"></div>
+      <div class="fld"><label>Topic title</label><input id="m_topic" placeholder="e.g. Booking Management System"></div>
+      <div class="fld"><label>Your name</label><input id="m_name" placeholder="Assessor name"></div>
+      <div class="fld"><label>Organisation / role</label><input id="m_org" placeholder="e.g. G.SERVE Solution — Product Lead"></div>
+      <div class="fld"><label>Stage assessed</label>
+        <select id="m_stage">
+          <option value="Seminar">Seminar</option>
+          <option value="SP1">Senior Project 1</option>
+          <option value="SP2" selected>Senior Project 2</option>
+        </select>
+      </div>
+      <div class="fld"><label>Date</label><input id="m_date" type="date"></div>
+    </div>
+
+    <div class="stagebox">
+      <span class="st" id="stage_lbl">Senior Project 2</span>
+      <span id="stage_hint"><b>Assess the delivered product:</b> a working, quality-assured system and its evaluation — score what the team actually built and the value it creates.</span>
+    </div>
+  </div>
+
+  <!-- CRITERIA -->
+  <div class="sec">
+    <p class="sec-k">2 · Score each PLO (1 = well below · 3 = meets expectation · 5 = excellent / industry-ready)</p>
+
+    <!-- PLO1 -->
+    <div class="crit" data-c="1">
+      <div class="top"><span class="plo p2">PLO 1</span><h3>Professionalism &amp; responsibility</h3></div>
+      <p class="desc">Acts with honesty and integrity, respects privacy and confidentiality, and takes responsibility with regard for users and the public interest.</p>
+      <div class="anchors">
+        <div><b>1 · Below</b> — careless with commitments, data or credit; needs prompting to act responsibly.</div>
+        <div><b>3 · Meets</b> — reliable, honest, respects your data &amp; deadlines.</div>
+        <div><b>5 · Excellent</b> — proactively raises ethical/privacy issues; fully accountable and trustworthy.</div>
+      </div>
+      <div class="scale" role="radiogroup" aria-label="PLO1 score">
+        <span class="opt"><input type="radio" name="c1" id="c1_1" value="1"><label for="c1_1">1</label></span>
+        <span class="opt"><input type="radio" name="c1" id="c1_2" value="2"><label for="c1_2">2</label></span>
+        <span class="opt"><input type="radio" name="c1" id="c1_3" value="3"><label for="c1_3">3</label></span>
+        <span class="opt"><input type="radio" name="c1" id="c1_4" value="4"><label for="c1_4">4</label></span>
+        <span class="opt"><input type="radio" name="c1" id="c1_5" value="5"><label for="c1_5">5</label></span>
+        <span class="opt na"><input type="radio" name="c1" id="c1_0" value="0"><label for="c1_0">N/A</label></span>
+      </div>
+      <textarea class="cmt" data-cmt="1" placeholder="Comment (optional)"></textarea>
+    </div>
+
+    <!-- PLO2 (focus) -->
+    <div class="crit focus" data-c="2">
+      <div class="top"><span class="plo p1">PLO 2</span><h3>Technology &amp; business insight</h3><span class="prio">employer priority</span></div>
+      <p class="desc">Connects key software technologies, methods and emerging/disruptive tech to the problem — and to its business or entrepreneurial value in your context.</p>
+      <div class="anchors">
+        <div><b>1 · Below</b> — picks tools without rationale; little grasp of the business need.</div>
+        <div><b>3 · Meets</b> — sound technology choices linked to the requirement.</div>
+        <div><b>5 · Excellent</b> — weighs trade-offs &amp; emerging tech against clear business value.</div>
+      </div>
+      <div class="scale" role="radiogroup" aria-label="PLO2 score">
+        <span class="opt"><input type="radio" name="c2" id="c2_1" value="1"><label for="c2_1">1</label></span>
+        <span class="opt"><input type="radio" name="c2" id="c2_2" value="2"><label for="c2_2">2</label></span>
+        <span class="opt"><input type="radio" name="c2" id="c2_3" value="3"><label for="c2_3">3</label></span>
+        <span class="opt"><input type="radio" name="c2" id="c2_4" value="4"><label for="c2_4">4</label></span>
+        <span class="opt"><input type="radio" name="c2" id="c2_5" value="5"><label for="c2_5">5</label></span>
+        <span class="opt na"><input type="radio" name="c2" id="c2_0" value="0"><label for="c2_0">N/A</label></span>
+      </div>
+      <textarea class="cmt" data-cmt="2" placeholder="Comment (optional)"></textarea>
+    </div>
+
+    <!-- PLO3 (focus) -->
+    <div class="crit focus" data-c="3">
+      <div class="top"><span class="plo p3">PLO 3</span><h3>Solution design &amp; architecture</h3><span class="prio">employer priority</span></div>
+      <p class="desc">Designs software architecture or an information-system structure that fits the problem, integrating appropriate technologies and related disciplines.</p>
+      <div class="anchors">
+        <div><b>1 · Below</b> — design unclear or unworkable for real use.</div>
+        <div><b>3 · Meets</b> — coherent design that would work in practice.</div>
+        <div><b>5 · Excellent</b> — robust, scalable design justified against alternatives.</div>
+      </div>
+      <div class="scale" role="radiogroup" aria-label="PLO3 score">
+        <span class="opt"><input type="radio" name="c3" id="c3_1" value="1"><label for="c3_1">1</label></span>
+        <span class="opt"><input type="radio" name="c3" id="c3_2" value="2"><label for="c3_2">2</label></span>
+        <span class="opt"><input type="radio" name="c3" id="c3_3" value="3"><label for="c3_3">3</label></span>
+        <span class="opt"><input type="radio" name="c3" id="c3_4" value="4"><label for="c3_4">4</label></span>
+        <span class="opt"><input type="radio" name="c3" id="c3_5" value="5"><label for="c3_5">5</label></span>
+        <span class="opt na"><input type="radio" name="c3" id="c3_0" value="0"><label for="c3_0">N/A</label></span>
+      </div>
+      <textarea class="cmt" data-cmt="3" placeholder="Comment (optional)"></textarea>
+    </div>
+
+    <!-- PLO4 -->
+    <div class="crit" data-c="4">
+      <div class="top"><span class="plo p2">PLO 4</span><h3>Teamwork &amp; collaboration</h3></div>
+      <p class="desc">Shows effective leadership and followership and collaborates well with others, including across cultures and with your organisation.</p>
+      <div class="anchors">
+        <div><b>1 · Below</b> — uneven contribution; poor coordination with you.</div>
+        <div><b>3 · Meets</b> — organised team; responsive and easy to work with.</div>
+        <div><b>5 · Excellent</b> — strong shared ownership; leads and supports as needed.</div>
+      </div>
+      <div class="scale" role="radiogroup" aria-label="PLO4 score">
+        <span class="opt"><input type="radio" name="c4" id="c4_1" value="1"><label for="c4_1">1</label></span>
+        <span class="opt"><input type="radio" name="c4" id="c4_2" value="2"><label for="c4_2">2</label></span>
+        <span class="opt"><input type="radio" name="c4" id="c4_3" value="3"><label for="c4_3">3</label></span>
+        <span class="opt"><input type="radio" name="c4" id="c4_4" value="4"><label for="c4_4">4</label></span>
+        <span class="opt"><input type="radio" name="c4" id="c4_5" value="5"><label for="c4_5">5</label></span>
+        <span class="opt na"><input type="radio" name="c4" id="c4_0" value="0"><label for="c4_0">N/A</label></span>
+      </div>
+      <textarea class="cmt" data-cmt="4" placeholder="Comment (optional)"></textarea>
+    </div>
+
+    <!-- PLO5 -->
+    <div class="crit" data-c="5">
+      <div class="top"><span class="plo p4">PLO 5</span><h3>Communication (incl. English) &amp; tools</h3></div>
+      <p class="desc">Presents and documents the work clearly — including in <b>English</b> — analyses data soundly, and uses appropriate development tools.</p>
+      <div class="anchors">
+        <div><b>1 · Below</b> — hard to follow; weak presentation or English.</div>
+        <div><b>3 · Meets</b> — clear presentation &amp; docs; adequate English.</div>
+        <div><b>5 · Excellent</b> — confident, professional communication in English.</div>
+      </div>
+      <div class="scale" role="radiogroup" aria-label="PLO5 score">
+        <span class="opt"><input type="radio" name="c5" id="c5_1" value="1"><label for="c5_1">1</label></span>
+        <span class="opt"><input type="radio" name="c5" id="c5_2" value="2"><label for="c5_2">2</label></span>
+        <span class="opt"><input type="radio" name="c5" id="c5_3" value="3"><label for="c5_3">3</label></span>
+        <span class="opt"><input type="radio" name="c5" id="c5_4" value="4"><label for="c5_4">4</label></span>
+        <span class="opt"><input type="radio" name="c5" id="c5_5" value="5"><label for="c5_5">5</label></span>
+        <span class="opt na"><input type="radio" name="c5" id="c5_0" value="0"><label for="c5_0">N/A</label></span>
+      </div>
+      <textarea class="cmt" data-cmt="5" placeholder="Comment (optional)"></textarea>
+    </div>
+
+    <!-- PLO6 (focus) -->
+    <div class="crit focus" data-c="6">
+      <div class="top"><span class="plo p4">PLO 6</span><h3>Working product &amp; real-world value</h3><span class="prio">employer priority</span></div>
+      <p class="desc">Delivers software that works and keeps pace with current technology, and could realistically create <b>commercial or social value</b> in your setting.</p>
+      <div class="anchors">
+        <div><b>1 · Below</b> — incomplete or not usable in practice.</div>
+        <div><b>3 · Meets</b> — working system that addresses the need.</div>
+        <div><b>5 · Excellent</b> — deployable; you would adopt or pilot it.</div>
+      </div>
+      <div class="scale" role="radiogroup" aria-label="PLO6 score">
+        <span class="opt"><input type="radio" name="c6" id="c6_1" value="1"><label for="c6_1">1</label></span>
+        <span class="opt"><input type="radio" name="c6" id="c6_2" value="2"><label for="c6_2">2</label></span>
+        <span class="opt"><input type="radio" name="c6" id="c6_3" value="3"><label for="c6_3">3</label></span>
+        <span class="opt"><input type="radio" name="c6" id="c6_4" value="4"><label for="c6_4">4</label></span>
+        <span class="opt"><input type="radio" name="c6" id="c6_5" value="5"><label for="c6_5">5</label></span>
+        <span class="opt na"><input type="radio" name="c6" id="c6_0" value="0"><label for="c6_0">N/A</label></span>
+      </div>
+      <textarea class="cmt" data-cmt="6" placeholder="Comment (optional)"></textarea>
+    </div>
+  </div>
+
+  <!-- OVERALL -->
+  <div class="sec">
+    <p class="sec-k">3 · Overall</p>
+    <div class="overall">
+      <div class="fld"><label>Would you adopt / pilot this solution, or hire this team?</label>
+        <div class="yn" id="hire">
+          <label><input type="radio" name="hire" value="Yes">Yes</label>
+          <label><input type="radio" name="hire" value="With changes">With changes</label>
+          <label><input type="radio" name="hire" value="Not yet">Not yet</label>
+        </div>
+      </div>
+      <div class="fld"><label>Strengths</label><textarea id="o_str" placeholder="What impressed you?"></textarea></div>
+      <div class="fld"><label>What should the team improve? (skills the programme should strengthen)</label><textarea id="o_imp" placeholder="e.g. English presentation, requirement analysis, testing…"></textarea></div>
+    </div>
+  </div>
+
+  <!-- SCORE BAR -->
+  <div class="scorebar">
+    <div><div class="lbl">Total</div><span class="big" id="s_total">0</span><span class="unit"> / <span id="s_max">30</span></span></div>
+    <div><div class="lbl">Average</div><span class="big" id="s_avg">–</span><span class="unit"> / 5</span></div>
+    <div class="focuschip" title="PLO2 + PLO3 + PLO6 — the outcomes employers rated lowest"><div class="lbl">Employer-priority avg</div><span class="big" id="s_focus">–</span><span class="unit"> / 5</span></div>
+    <div class="actions no-print">
+      <button class="ghost" id="reset">Reset</button>
+      <button class="ghost" id="copy">Copy summary</button>
+      <button class="solid" id="submit">Submit to coordinator</button>
+    </div>
+  </div>
+
+  <footer>
+    <p><b>Mapping.</b> PLO1 Ethics · PLO2 Technology &amp; entrepreneurship · PLO3 Architecture &amp; design · PLO4 Teamwork · PLO5 Numerical &amp; English communication · PLO6 Product &amp; value (curriculum 2564). Employer-priority = PLO2, PLO3, PLO6.</p>
+    <p>SE Programme · Stakeholder Assessment Rubric v1.0 · supports AUN-QA <b>C4</b> (private-sector assessment of Senior Projects) and <b>C8</b> (employer PLO-attainment evidence). Return the completed sheet to the Programme Coordinator; data are handled under Thailand's PDPA.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  document.getElementById('tg').addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    root.setAttribute('data-theme', cur? (cur==='dark'?'light':'dark') : (matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark'));
+  });
+  document.getElementById('print').addEventListener('click',function(){window.print();});
+
+  // default date = today
+  var d=new Date(); var iso=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  document.getElementById('m_date').value=iso;
+
+  // stage guidance
+  var hints={
+    Seminar:{lbl:'Seminar', t:'<b>Assess the plan &amp; understanding:</b> how well the team frames the problem, judges feasibility, and proposes an approach — score potential, not a finished product.'},
+    SP1:{lbl:'Senior Project 1', t:'<b>Assess the analysis, design &amp; prototype:</b> quality of requirements, architecture and an early working prototype — score design quality and progress.'},
+    SP2:{lbl:'Senior Project 2', t:'<b>Assess the delivered product:</b> a working, quality-assured system and its evaluation — score what the team actually built and the value it creates.'}
+  };
+  var stageSel=document.getElementById('m_stage');
+  function stage(){var h=hints[stageSel.value]; document.getElementById('stage_lbl').textContent=h.lbl; document.getElementById('stage_hint').innerHTML=h.t;}
+  stageSel.addEventListener('change',stage); stage();
+
+  // scoring
+  function val(n){var el=document.querySelector('input[name="'+n+'"]:checked'); return el?parseInt(el.value,10):null;}
+  function calc(){
+    var names=['c1','c2','c3','c4','c5','c6'], sum=0, cnt=0, fsum=0, fcnt=0, focus={c2:1,c3:1,c6:1};
+    names.forEach(function(n){var v=val(n); if(v!==null && v>0){sum+=v;cnt++; if(focus[n]){fsum+=v;fcnt++;}}});
+    document.getElementById('s_total').textContent=sum;
+    document.getElementById('s_max').textContent=(cnt*5)||30;
+    document.getElementById('s_avg').textContent=cnt? (sum/cnt).toFixed(2):'–';
+    document.getElementById('s_focus').textContent=fcnt? (fsum/fcnt).toFixed(2):'–';
+  }
+  document.querySelectorAll('.scale input').forEach(function(i){i.addEventListener('change',calc);});
+  calc();
+
+  // reset
+  document.getElementById('reset').addEventListener('click',function(){
+    if(!confirm('Clear all scores and comments?')) return;
+    document.querySelectorAll('.scale input:checked, input[name="hire"]:checked').forEach(function(i){i.checked=false;});
+    document.querySelectorAll('.cmt, textarea, .fld input').forEach(function(t){ if(t.id!=='m_date') t.value=''; });
+    calc();
+  });
+
+  // ===== where the score goes =====
+  // Paste your deployed Google Apps Script Web App URL between the quotes to enable
+  // "Submit to coordinator". Leave empty and the button falls back to Copy summary.
+  // Backend script: Stakeholder-Assessment-Rubric.gs (same folder).
+  var SUBMIT_ENDPOINT = "";
+
+  var titles={c1:'PLO1 Professionalism',c2:'PLO2 Tech & business',c3:'PLO3 Design & architecture',c4:'PLO4 Teamwork',c5:'PLO5 Communication (Eng)',c6:'PLO6 Product & value'};
+  function g(id){var e=document.getElementById(id); return e?(e.value||'').trim():'';}
+
+  // collect everything into one object (used by copy, submit and autosave)
+  function collect(){
+    var o={ team:g('m_team'), topic:g('m_topic'), assessor:g('m_name'), org:g('m_org'),
+            stage:stageSel.value, date:g('m_date'),
+            total:document.getElementById('s_total').textContent,
+            max:document.getElementById('s_max').textContent,
+            average:document.getElementById('s_avg').textContent,
+            focus_avg:document.getElementById('s_focus').textContent };
+    var hire=document.querySelector('input[name="hire"]:checked'); o.hire=hire?hire.value:'';
+    o.strengths=g('o_str'); o.improve=g('o_imp');
+    ['c1','c2','c3','c4','c5','c6'].forEach(function(n){
+      var v=val(n); o[n]=(v===0)?'N/A':(v===null?'':v);
+      o[n+'_cmt']=(document.querySelector('.cmt[data-cmt="'+n.slice(1)+'"]').value||'').trim();
+    });
+    return o;
+  }
+  function summaryText(o){
+    var L=['SE Stakeholder Assessment Rubric',
+      'Team: '+o.team+' | Topic: '+o.topic,
+      'Assessor: '+o.assessor+' ('+o.org+') | Stage: '+o.stage+' | Date: '+o.date, ''];
+    ['c1','c2','c3','c4','c5','c6'].forEach(function(n){
+      L.push(titles[n]+': '+(o[n]||'-')+(o[n+'_cmt']?('  — '+o[n+'_cmt']):''));
+    });
+    L.push('', 'Total: '+o.total+'/'+o.max+' | Average: '+o.average+'/5 | Employer-priority (PLO2/3/6): '+o.focus_avg+'/5',
+      'Adopt/hire: '+(o.hire||'-'), 'Strengths: '+o.strengths, 'Improve: '+o.improve);
+    return L.join('\n');
+  }
+  function flash(btn,msg){var o=btn.textContent; btn.textContent=msg; setTimeout(function(){btn.textContent=o;},1600);}
+
+  // copy summary
+  document.getElementById('copy').addEventListener('click',function(){
+    var text=summaryText(collect());
+    (navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject())
+      .then(function(){flash(document.getElementById('copy'),'Copied ✓');})
+      .catch(function(){window.prompt('Copy the summary below:', text);});
+  });
+
+  // submit to coordinator's Google Sheet (Apps Script Web App)
+  document.getElementById('submit').addEventListener('click',function(){
+    var btn=this, o=collect();
+    if(!o.team && !o.topic){ alert('Please fill in the Team or Topic first.'); return; }
+    if(o.total==='0'){ if(!confirm('No scores selected yet. Submit anyway?')) return; }
+    if(!SUBMIT_ENDPOINT){
+      alert('Online submission isn’t set up on this copy yet.\nUse “Copy summary” or “Print / PDF” and send it to the coordinator.\n(The coordinator can enable Submit by pasting the Google Apps Script URL into SUBMIT_ENDPOINT.)');
+      document.getElementById('copy').click(); return;
+    }
+    btn.disabled=true; flash(btn,'Submitting…');
+    // no-cors + text/plain: a simple request Apps Script accepts without a CORS preflight.
+    // The response is opaque (can't be read cross-origin), so a resolved promise = delivered.
+    fetch(SUBMIT_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(o)})
+      .then(function(){ btn.disabled=false; flash(btn,'Submitted ✓'); try{localStorage.removeItem(LSKEY);}catch(e){} })
+      .catch(function(){ btn.disabled=false; flash(btn,'Failed — copy instead'); document.getElementById('copy').click(); });
+  });
+
+  // ===== draft autosave (per-device, local only) =====
+  var LSKEY='se-sp-rubric-draft';
+  var fields=['m_team','m_topic','m_name','m_org','m_date','o_str','o_imp'];
+  function saveDraft(){
+    try{
+      var d={stage:stageSel.value};
+      fields.forEach(function(f){d[f]=g(f);});
+      document.querySelectorAll('.scale input:checked').forEach(function(i){d[i.name]=i.value;});
+      var h=document.querySelector('input[name="hire"]:checked'); if(h)d.hire=h.value;
+      document.querySelectorAll('.cmt').forEach(function(t){if(t.value)d['cmt'+t.dataset.cmt]=t.value;});
+      localStorage.setItem(LSKEY, JSON.stringify(d));
+    }catch(e){}
+  }
+  function restoreDraft(){
+    try{
+      var raw=localStorage.getItem(LSKEY); if(!raw) return; var d=JSON.parse(raw);
+      fields.forEach(function(f){ if(d[f]!==undefined){var e=document.getElementById(f); if(e)e.value=d[f];} });
+      if(d.stage){stageSel.value=d.stage; stage();}
+      ['c1','c2','c3','c4','c5','c6'].forEach(function(n){ if(d[n]!==undefined){var r=document.querySelector('input[name="'+n+'"][value="'+d[n]+'"]'); if(r)r.checked=true;} });
+      if(d.hire){var hr=document.querySelector('input[name="hire"][value="'+d.hire+'"]'); if(hr)hr.checked=true;}
+      Object.keys(d).forEach(function(k){ if(k.indexOf('cmt')===0){var t=document.querySelector('.cmt[data-cmt="'+k.slice(3)+'"]'); if(t)t.value=d[k];} });
+      calc();
+    }catch(e){}
+  }
+  restoreDraft();
+  document.addEventListener('input',saveDraft);
+  document.addEventListener('change',saveDraft);
+  // clear draft on reset (extend existing handler)
+  document.getElementById('reset').addEventListener('click',function(){try{localStorage.removeItem(LSKEY);}catch(e){}});
+})();
+</script>
+</body>
+</html>
