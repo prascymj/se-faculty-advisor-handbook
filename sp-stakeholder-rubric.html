@@ -113,6 +113,21 @@
 
   @media (max-width:720px){ .meta{grid-template-columns:1fr} .anchors{grid-template-columns:1fr} }
 
+  /* sign-in gate */
+  .gate{position:fixed;inset:0;z-index:100;background:var(--paper);display:grid;place-items:center;padding:24px}
+  .gate[hidden]{display:none}
+  .gate .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);max-width:430px;width:100%;padding:30px 28px;text-align:center}
+  .gate .eyebrow{margin:0 0 10px}
+  .gate h2{margin:0 0 8px;font-size:23px;font-weight:800;letter-spacing:-.01em}
+  .gate p{margin:0 0 18px;font-size:14px;color:var(--ink-2)}
+  .gate .gbtn{display:flex;justify-content:center;min-height:44px}
+  .gate .err{color:var(--stop);font-size:13px;margin-top:12px;min-height:16px}
+  .idbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-3);margin-top:14px}
+  .idbar[hidden]{display:none}
+  .idbar .who b{color:var(--ink-2)}
+  .idbar button{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:16px;padding:4px 11px;cursor:pointer}
+  .idbar button:hover{border-color:var(--ink-3)}
+
   /* print */
   @media print{
     body{background:#fff;color:#000}
@@ -127,6 +142,17 @@
 </style>
 </head>
 <body>
+
+<!-- SIGN-IN GATE (activates only when CLIENT_ID is set) -->
+<div class="gate" id="gate" hidden>
+  <div class="card">
+    <p class="eyebrow">SE Programme · Stakeholder assessment</p>
+    <h2>Sign in to continue</h2>
+    <p>Please sign in with your Google account to open the assessment. Your verified email is recorded with each score you submit.</p>
+    <div class="gbtn" id="gbtn"></div>
+    <div class="err" id="gerr"></div>
+  </div>
+</div>
 
 <div class="bar-top">
   <span class="code">SE PROGRAMME</span>
@@ -149,6 +175,11 @@
     Score each PLO on a <b>1–5</b> scale (<b>N/A</b> if you cannot judge it at this stage) — the totals update live. When done, choose one:
     <b>Submit to coordinator</b> (sends the result to the programme's secure Google Sheet), or <b>Copy summary</b> / <b>Print&nbsp;/&nbsp;PDF</b> to return it by hand or email.
     Your draft stays on this device until you submit or reset; nothing else is uploaded. Handle data under <b>PDPA</b> — refer to the <b>team/topic</b>, not students' personal data. The coordinator files each result in the <b>SP Stakeholder Assessment</b> sheet and as evidence under AUN-QA C4 / C8.
+  </div>
+
+  <div class="idbar no-print" id="idbar" hidden>
+    <span class="who"></span>
+    <button type="button" id="signout">Sign out</button>
   </div>
 
   <!-- META -->
@@ -334,9 +365,54 @@
   </footer>
 </div>
 
+<script src="https://accounts.google.com/gsi/client" async></script>
 <script>
 (function(){
   var root=document.documentElement;
+
+  // ===== Google sign-in gate =====
+  // Paste the OAuth 2.0 Web Client ID (Google Cloud Console) to REQUIRE Google
+  // sign-in before the form can be used. Must match CLIENT_ID in the .gs backend.
+  // Leave empty to turn sign-in off. Authorized JavaScript origin must include
+  // https://prascymj.github.io
+  var CLIENT_ID = "103262587771-lrqckvr4c2r4htt7leirllvsgqvlbh9o.apps.googleusercontent.com";
+  window.__idToken = null; window.__signedIn = false; window.__assessorEmail = "";
+
+  function parseJwt(t){
+    try{ var b=t.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');
+      return JSON.parse(decodeURIComponent(escape(atob(b)))); }catch(e){ return {}; }
+  }
+  function onCredential(resp){
+    window.__idToken = resp.credential; var p = parseJwt(resp.credential);
+    window.__signedIn = true; window.__assessorEmail = p.email || "";
+    var gate=document.getElementById('gate'); if(gate) gate.hidden=true;
+    var ib=document.getElementById('idbar');
+    if(ib){ ib.hidden=false; ib.querySelector('.who').innerHTML='Signed in as <b>'+(p.email||'')+'</b>'; }
+    var nm=document.getElementById('m_name'); if(nm && !nm.value && p.name) nm.value=p.name;
+  }
+  window.__onCredential = onCredential;
+  function signOut(){
+    window.__signedIn=false; window.__idToken=null;
+    try{ google.accounts.id.disableAutoSelect(); }catch(e){}
+    location.reload();
+  }
+  var so=document.getElementById('signout'); if(so) so.addEventListener('click',signOut);
+
+  (function initGate(){
+    if(!CLIENT_ID) return;                       // auth off until configured
+    document.getElementById('gate').hidden=false;
+    (function ready(n){
+      if(window.google && google.accounts && google.accounts.id){
+        try{
+          google.accounts.id.initialize({client_id:CLIENT_ID, callback:onCredential, auto_select:false});
+          google.accounts.id.renderButton(document.getElementById('gbtn'),
+            {theme:'filled_blue', size:'large', text:'signin_with', shape:'pill', width:260});
+        }catch(e){ document.getElementById('gerr').textContent='Sign-in could not start: '+e.message; }
+      } else if(n>0){ setTimeout(function(){ready(n-1);},200); }
+      else { document.getElementById('gerr').textContent='Could not load Google sign-in. Check your connection and reload.'; }
+    })(25);
+  })();
+
   document.getElementById('tg').addEventListener('click',function(){
     var cur=root.getAttribute('data-theme');
     root.setAttribute('data-theme', cur? (cur==='dark'?'light':'dark') : (matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark'));
@@ -401,6 +477,8 @@
       var v=val(n); o[n]=(v===0)?'N/A':(v===null?'':v);
       o[n+'_cmt']=(document.querySelector('.cmt[data-cmt="'+n.slice(1)+'"]').value||'').trim();
     });
+    o.id_token = window.__idToken || '';
+    o.signin_email = window.__assessorEmail || '';
     return o;
   }
   function summaryText(o){
@@ -427,6 +505,11 @@
   // submit to coordinator's Google Sheet (Apps Script Web App)
   document.getElementById('submit').addEventListener('click',function(){
     var btn=this, o=collect();
+    if(CLIENT_ID){
+      if(!window.__signedIn || !o.id_token){ alert('Please sign in with Google first.'); document.getElementById('gate').hidden=false; return; }
+      var exp=(parseJwt(o.id_token).exp||0)*1000;
+      if(exp && exp < Date.now()+5000){ alert('Your Google sign-in has expired. Please sign in again, then submit.'); window.__signedIn=false; document.getElementById('gate').hidden=false; return; }
+    }
     if(!o.team && !o.topic){ alert('Please fill in the Team or Topic first.'); return; }
     if(o.total==='0'){ if(!confirm('No scores selected yet. Submit anyway?')) return; }
     if(!SUBMIT_ENDPOINT){
