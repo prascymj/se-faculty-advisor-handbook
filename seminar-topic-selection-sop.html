@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Seminar Topic Selection — SOP</title>
+<style>
+  :root{
+    --paper:#F3F4F7; --card:#FFFFFF; --ink:#141B24; --ink-2:#3A4655; --ink-3:#6A7686;
+    --line:#DCE0E7; --line-2:#E9ECF1;
+    --p1:#3E7CB1; --p2:#2A9D8F; --p3:#E1972B; --p4:#D9542B;
+    --accent:var(--p1); --accent-soft:#E8F0F7;
+    --good:#2A9D8F; --warn:#E1972B; --stop:#C6402A;
+    --shadow:0 1px 2px rgba(20,27,36,.05),0 10px 30px rgba(20,27,36,.07);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0E141B; --card:#161F2A; --ink:#EAEEF4; --ink-2:#AEB9C7; --ink-3:#7C8797;
+      --line:#26313E; --line-2:#1E2733; --p1:#5B9BD1; --p2:#3FB9AA; --p3:#EFB44A; --p4:#EE7350;
+      --accent-soft:#152230; --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0E141B; --card:#161F2A; --ink:#EAEEF4; --ink-2:#AEB9C7; --ink-3:#7C8797;
+    --line:#26313E; --line-2:#1E2733; --p1:#5B9BD1; --p2:#3FB9AA; --p3:#EFB44A; --p4:#EE7350;
+    --accent-soft:#152230; --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.4);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,"Noto Sans Thai",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+  .wrap{max-width:1000px;margin:0 auto;padding:80px 22px 90px}
+
+  .bar-top{position:fixed;top:14px;left:18px;right:18px;display:flex;align-items:center;justify-content:space-between;z-index:20;pointer-events:none}
+  .bar-top .code{pointer-events:auto;font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;color:#fff;background:var(--ink);padding:5px 10px;border-radius:6px;letter-spacing:.04em}
+  .bar-top .btns{pointer-events:auto;display:flex;gap:8px}
+  .bar-top button{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:20px;cursor:pointer}
+  .bar-top button:hover{border-color:var(--ink-3)}
+
+  .eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:clamp(11px,1.5vw,13px);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin:0}
+  h1{font-size:clamp(28px,5vw,46px);line-height:1.06;letter-spacing:-.02em;font-weight:800;margin:6px 0 0;text-wrap:balance}
+  h2{font-size:clamp(21px,3.2vw,30px);line-height:1.12;letter-spacing:-.02em;font-weight:800;margin:0;text-wrap:balance}
+  .lead{font-size:clamp(15px,2vw,19px);color:var(--ink-2);max-width:74ch;margin:10px 0 0}
+  .lead b{color:var(--ink)}
+  .hero{border-left:4px solid var(--accent);padding-left:clamp(16px,3vw,26px)}
+  .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-family:ui-monospace,Menlo,monospace;font-size:clamp(11px,1.5vw,13px);color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 11px}
+  .chip b{color:var(--ink)}
+  .chip.hot{background:var(--accent-soft);border-color:transparent;color:var(--accent);font-weight:700}
+
+  .notice{margin:24px 0 6px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--p2);border-radius:14px;padding:15px 18px;font-size:clamp(13px,1.7vw,15px);color:var(--ink-2);box-shadow:var(--shadow)}
+  .notice .k{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--p2);display:block;margin-bottom:5px}
+  .notice b{color:var(--ink)}
+
+  .sec{margin-top:46px}
+  .sec-k{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:0 0 4px}
+  .sec h2{margin-top:2px}
+  .sec .lead{font-size:clamp(14px,1.8vw,16px)}
+
+  /* pill nav */
+  .pillnav{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .pillnav a{font-size:13px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:20px;padding:7px 14px;white-space:nowrap}
+  .pillnav a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+
+  /* cards grid */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+  .c{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;box-shadow:var(--shadow)}
+  .c .kk{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+  .c h4{margin:5px 0 5px;font-size:clamp(14.5px,1.9vw,17px);font-weight:750}
+  .c p{margin:0;font-size:clamp(12.5px,1.6vw,14px);color:var(--ink-2)}
+  .c p b{color:var(--ink)}
+
+  /* table */
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-top:16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:clamp(12.5px,1.6vw,14px);background:var(--card)}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line-2);vertical-align:top}
+  th{background:var(--paper);font-family:ui-monospace,Menlo,monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);font-weight:700}
+  tr:last-child td{border-bottom:none}
+  td code,td .mono{font-family:ui-monospace,Menlo,monospace;background:var(--paper);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:12px;color:var(--ink-2)}
+  td b{color:var(--ink)}
+
+  /* timeline */
+  .tl{position:relative;margin-top:18px;padding-left:24px}
+  .tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
+  .tl .ph{position:relative;padding:0 0 22px 6px}
+  .tl .ph:last-child{padding-bottom:0}
+  .tl .ph::before{content:"";position:absolute;left:-24px;top:3px;width:13px;height:13px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--paper)}
+  .tl .ph.p1::before{background:var(--p1)} .tl .ph.p2::before{background:var(--p2)}
+  .tl .ph.p3::before{background:var(--p3)} .tl .ph.p4::before{background:var(--p4)}
+  .tl .when{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  .tl h4{margin:2px 0 5px;font-size:clamp(15.5px,2vw,18px);font-weight:750}
+  .tl p{margin:0 0 5px;font-size:clamp(13px,1.7vw,14.5px);color:var(--ink-2)}
+  .tl .who{font-size:12.5px;color:var(--ink-3)} .tl .who b{color:var(--ink-2)}
+  .tl ul{margin:5px 0 0;padding-left:18px;color:var(--ink-2);font-size:clamp(12.5px,1.6vw,14px);display:flex;flex-direction:column;gap:4px}
+  .tl .out{display:inline-block;margin-top:7px;font-size:12px;color:var(--good);background:color-mix(in srgb,var(--good) 8%,var(--card));border:1px solid color-mix(in srgb,var(--good) 30%,var(--line));border-radius:8px;padding:3px 9px}
+
+  /* lanes */
+  .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow)}
+  .box.a1{border-top:3px solid var(--p1)} .box.a2{border-top:3px solid var(--p2)}
+  .box .num{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .box.a1 .num{color:var(--p1)} .box.a2 .num{color:var(--p2)}
+  .box h3{margin:4px 0 10px;font-size:clamp(17px,2.3vw,21px);font-weight:780}
+  ol.steps,ul.steps{margin:0;padding-left:18px;color:var(--ink-2);font-size:clamp(13px,1.7vw,15px);display:flex;flex-direction:column;gap:7px}
+  ol.steps b,ul.steps b{color:var(--ink)}
+
+  /* flags */
+  .todo{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--warn);border:1px dashed var(--warn);padding:1px 7px;border-radius:6px;white-space:nowrap}
+  .flag{margin-top:16px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:10px;padding:12px 15px;font-size:13.5px;color:var(--ink-2)}
+  .flag .k{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--warn);display:block;margin-bottom:5px}
+  .flag b{color:var(--ink)}
+
+  footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--line);font-size:clamp(12.5px,1.6vw,14px);color:var(--ink-3)}
+  footer b{color:var(--ink-2)}
+
+  @media (max-width:760px){ .grid2,.grid3{grid-template-columns:1fr} .wrap{padding:74px 18px 80px} }
+  @media print{
+    body{background:#fff;color:#000}
+    .bar-top,.no-print{display:none!important}
+    .wrap{padding:0;max-width:none}
+    .box,.c,.notice,.tablewrap,.flag{box-shadow:none;break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar-top">
+  <span class="code">SE PROGRAMME</span>
+  <div class="btns"><button id="print">Print / PDF</button><button id="tg">theme</button></div>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="eyebrow">SOP · Seminar → Senior Project</p>
+    <h1>Seminar Topic Selection</h1>
+    <p class="lead">The single source of truth for how Seminar topics are <b>sourced, pitched, chosen and matched</b> — and how the topic and advisor carry forward into <b>Senior Project 1 → Senior Project 2</b>. A <b>supply-driven</b> model: faculty source real topics from real demand; students express ranked preferences; the course team matches.</p>
+    <div class="facts">
+      <span class="chip hot">Course <b>1305392</b> · Seminar in SE</span>
+      <span class="chip">Curriculum <b>2564</b> · Year 3 (cohorts 2566–2568)</span>
+      <span class="chip">Selection unit <b>Group (≤4)</b></span>
+      <span class="chip">AUN-QA <b>1.5 · 2.5 · 3.3 · 3.4 · 4.3 · 8.4</b></span>
+    </div>
+  </header>
+
+  <div class="notice">
+    <span class="k">Shared document</span>
+    This SOP appears in <b>both</b> the SE Student Handbook and the Faculty &amp; Advisor Handbook. Owner: <b>Programme coordinator</b> · reviewed annually before Pitching Day. Items tagged <span class="todo">TO CONFIRM</span> must be filled by the course team before publishing to students.
+  </div>
+
+  <!-- NAV -->
+  <nav class="sec" aria-label="On this page" style="margin-top:30px">
+    <p class="sec-k">On this page</p>
+    <div class="pillnav">
+      <a href="#purpose">Purpose</a>
+      <a href="#principles">Principles</a>
+      <a href="#roles">Roles</a>
+      <a href="#flow">Process at a glance</a>
+      <a href="#stages">Stage-by-stage</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#forms">Forms &amp; templates</a>
+      <a href="#lanes">Student &amp; advisor guide</a>
+      <a href="#evidence">Records &amp; AUN-QA</a>
+    </div>
+  </nav>
+
+  <!-- PURPOSE -->
+  <section class="sec" id="purpose">
+    <p class="sec-k">1 · Purpose</p>
+    <h2>Transparent, stakeholder-driven, continuous</h2>
+    <p class="lead">Make topic selection fair and traceable — so every group works on a real, supervised topic that can mature from Seminar into a full Senior Project. Topics are sourced by faculty from real demand (<b>industry / MoU partners</b>, <b>university units</b>, <b>faculty research</b>), then offered to students who rank their preferences; the course team matches groups to topics and advisors.</p>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section class="sec" id="principles">
+    <p class="sec-k">2 · Guiding principles</p>
+    <h2>Five principles</h2>
+    <div class="grid3">
+      <div class="c"><span class="kk">01</span><h4>Real problems first</h4><p>Every topic traces to a named <b>stakeholder</b> (industry / MoU / university unit / faculty research). No purely hypothetical topics.</p></div>
+      <div class="c"><span class="kk">02</span><h4>Student voice</h4><p>Groups rank <b>at least 3</b> topics (form allows up to 4) with a written <b>Expression of Interest</b>.</p></div>
+      <div class="c"><span class="kk">03</span><h4>Fair matching</h4><p>Matching rules and capacity per topic are published <b>before</b> students submit.</p></div>
+      <div class="c"><span class="kk">04</span><h4>Continuity</h4><p>The chosen topic and advisor stay with the group through Senior Project 1 and 2 wherever possible.</p></div>
+      <div class="c"><span class="kk">05</span><h4>Evidence-ready</h4><p>Each stage produces a record usable as AUN-QA evidence (topic sheet, pitch, bids, matching, announcement).</p></div>
+    </div>
+  </section>
+
+  <!-- ROLES -->
+  <section class="sec" id="roles">
+    <p class="sec-k">3 · Roles &amp; responsibilities</p>
+    <h2>Who does what</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Role</th><th>Responsibilities</th></tr></thead>
+        <tbody>
+          <tr><td><b>Programme coordinator</b></td><td>Owns the SOP; approves the topic pool; chairs the matching decision; signs the final announcement.</td></tr>
+          <tr><td><b>Seminar course team</b> (faculty)</td><td>Sources topics; runs Pitching Day; publishes topic sheet + capacity + matching rules; performs matching.</td></tr>
+          <tr><td><b>Stakeholders</b> (industry / MoU / university units)</td><td>Propose problem statements; define scope and expectations; optionally co-mentor.</td></tr>
+          <tr><td><b>Prospective advisors</b></td><td>Offer topics from their research; declare capacity (max groups they can supervise).</td></tr>
+          <tr><td><b>Students</b> (groups)</td><td>Form a group (≤4), attend all pitches, submit ranked preferences + reasons by the deadline.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="sec" id="flow">
+    <p class="sec-k">4 · Process at a glance</p>
+    <h2>Eight stages, one pathway</h2>
+    <div class="tl">
+      <div class="ph p1"><div class="when">Stage 1</div><h4>Source topics</h4><p>Industry / MoU · university units · faculty research — every topic names a stakeholder.</p></div>
+      <div class="ph p1"><div class="when">Stage 2</div><h4>Curate topic pool</h4><p>Record scope, capacity, advisor and Pitching Day slot; publish topic sheet + matching rules + deadline.</p></div>
+      <div class="ph p2"><div class="when">Stage 3</div><h4>Pitching Day</h4><p>Topics presented to <b>all</b> students; pitch materials archived.</p></div>
+      <div class="ph p2"><div class="when">Stage 4</div><h4>Group bidding</h4><p>Groups rank ≥3 topics + Expression of Interest.</p></div>
+      <div class="ph p3"><div class="when">Stage 5</div><h4>Matching</h4><p>Course team applies the published rules; coordinator chairs.</p></div>
+      <div class="ph p3"><div class="when">Stage 6</div><h4>Announcement</h4><p>Official topic + advisor per group — locks the assignment.</p></div>
+      <div class="ph p4"><div class="when">Stage 7</div><h4>Execution</h4><p>Seminar work begins under the advisor.</p></div>
+      <div class="ph p4"><div class="when">Stage 8</div><h4>Continuity → Senior Project 1 → 2</h4><p>Topic &amp; advisor carry forward.</p></div>
+    </div>
+  </section>
+
+  <!-- STAGES -->
+  <section class="sec" id="stages">
+    <p class="sec-k">5 · Stage-by-stage SOP</p>
+    <h2>Detail for each stage</h2>
+    <div class="tl" style="margin-top:20px">
+      <div class="ph p1">
+        <div class="when">Stage 1 · Course team + stakeholders/advisors</div><h4>Source topics</h4>
+        <p class="who"><b>Who:</b> Course team, with stakeholders and advisors.</p>
+        <p><b>What:</b> collect candidate topics from three channels:</p>
+        <ul><li><b>Industry / MoU partners</b> — companies with an active MoU or collaboration.</li>
+          <li><b>University units</b> — internal offices needing a system (e.g. Placement &amp; Cooperative Education).</li>
+          <li><b>Faculty research</b> — topics extending an advisor's ongoing research.</li></ul>
+        <span class="out">Output · draft list, a named stakeholder per topic</span>
+      </div>
+      <div class="ph p1">
+        <div class="when">Stage 2 · Course team + coordinator (approval)</div><h4>Curate the topic pool</h4>
+        <p><b>What:</b> for every accepted topic record the standard fields (see Topic Sheet): stakeholder, title, detail, <b>accepted students per group</b>, assigned/expected advisor, and <b>Pitching Day slot</b>.</p>
+        <span class="out">Output · published Topic Sheet + matching rules + deadline, released before Pitching Day</span>
+      </div>
+      <div class="ph p2">
+        <div class="when">Stage 3 · Course team / stakeholders present · all students attend</div><h4>Pitching Day</h4>
+        <p><b>What:</b> each topic is pitched (scope, expected outcome, skills needed). Students take notes and ask questions.</p>
+        <span class="out">Output · pitch materials (slides/links) archived as evidence</span>
+      </div>
+      <div class="ph p2">
+        <div class="when">Stage 4 · Students, as groups</div><h4>Group bidding</h4>
+        <p><b>What:</b> each group submits the bidding form: group name, member IDs/names (≤4), preferred advisor (if any), and <b>ranked topic preferences (≥3, up to 4)</b> — each with an <b>Expression of Interest</b> explaining fit (relevant skills, prior experience, motivation).</p>
+        <span class="out">Output · bidding responses spreadsheet (one row per group)</span>
+      </div>
+      <div class="ph p3">
+        <div class="when">Stage 5 · Course team · coordinator chairs</div><h4>Matching</h4>
+        <p><b>What:</b> apply the published rules to assign each group to one topic and one advisor, respecting per-topic capacity and per-advisor load.</p>
+        <p><b>Suggested rules</b> (confirm &amp; publish before Stage 3):</p>
+        <ul>
+          <li>Honour the group's highest-ranked available topic first.</li>
+          <li>On oversubscription, rank competing groups by <b>strength of Expression of Interest + relevant skills</b> <span class="todo">ยืนยันเกณฑ์</span></li>
+          <li>Respect <b>capacity per topic</b> and <b>max groups per advisor</b> <span class="todo">ยืนยัน</span></li>
+          <li>Groups matched to none of their choices are placed on remaining topics and consulted <span class="todo">ยืนยันแผนสำรอง</span></li>
+        </ul>
+        <span class="out">Output · matching decision record (auditable)</span>
+      </div>
+      <div class="ph p3">
+        <div class="when">Stage 6 · Coordinator (sign-off)</div><h4>Announcement</h4>
+        <p><b>What:</b> officially announce <b>topic + advisor per group</b>. This locks the assignment.</p>
+        <span class="out">Output · official announcement (posted + archived)</span>
+      </div>
+      <div class="ph p4">
+        <div class="when">Stage 7 · Groups + advisors</div><h4>Execution</h4>
+        <p><b>What:</b> Seminar work begins under the assigned advisor (literature study, scoping, proposal), using the <b>Research Proposal Template</b> as the deliverable backbone.</p>
+        <span class="out">Output · Seminar proposal / paper</span>
+      </div>
+      <div class="ph p4">
+        <div class="when">Stage 8 · Groups + advisors + coordinator</div><h4>Continuity to Senior Project</h4>
+        <p><b>What:</b> the Seminar topic and advisor <b>carry forward</b> into Senior Project 1 (planning, analysis, design, prototype) and Senior Project 2 (full build, QA, evaluation). Scope may be refined but continuity is the default.</p>
+        <span class="out">Output · SP1 proposal defense → SP2 final defense</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="sec" id="timeline">
+    <p class="sec-k">6 · Indicative timeline</p>
+    <h2>The year at a glance</h2>
+    <div class="flag"><span class="k">TO CONFIRM · before each academic year</span> Fill actual weeks/dates below. <span class="todo">ยืนยัน timeline</span></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>When</th><th>Stage</th><th>Milestone</th></tr></thead>
+        <tbody>
+          <tr><td>Before term / Week <span class="mono">[ ]</span></td><td>1–2</td><td>Topic pool approved &amp; published</td></tr>
+          <tr><td>Week <span class="mono">[ ]</span></td><td>3</td><td><b>Pitching Day</b></td></tr>
+          <tr><td>Week <span class="mono">[ ]</span> (Pitching + <span class="mono">[ ]</span> days)</td><td>4</td><td><b>Bidding deadline</b></td></tr>
+          <tr><td>Week <span class="mono">[ ]</span></td><td>5–6</td><td>Matching + <b>official announcement</b></td></tr>
+          <tr><td>Week <span class="mono">[ ]</span> onward</td><td>7</td><td>Seminar execution</td></tr>
+          <tr><td>Y3 S2 / Y4 S1</td><td>8</td><td>Senior Project 1 → 2</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FORMS -->
+  <section class="sec" id="forms">
+    <p class="sec-k">7 · Forms &amp; templates</p>
+    <h2>Topic Sheet &amp; Bidding Form</h2>
+
+    <p class="lead" style="margin-top:14px"><b>Topic Sheet</b> — one row per topic; maintained by the course team; published before Pitching Day.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Field</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>No.</td><td>1</td></tr>
+          <tr><td>Stakeholder</td><td>Placement &amp; Cooperative Education</td></tr>
+          <tr><td>Topic</td><td>Internship Transcript</td></tr>
+          <tr><td>Detail</td><td>A system that takes a survey to employers …</td></tr>
+          <tr><td>Accepted students per group</td><td>3</td></tr>
+          <tr><td>Advisor</td><td><span class="mono">[assigned]</span></td></tr>
+          <tr><td>Pitching Day slot</td><td>Day 2, 14:00</td></tr>
+          <tr><td>Remarks / link</td><td>pitch deck link</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="lead" style="margin-top:20px"><b>Bidding Form</b> — one submission per group; collected via online form.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Field</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Timestamp / Email</td><td>auto</td></tr>
+          <tr><td>Group name</td><td>—</td></tr>
+          <tr><td>Member 1–4 — Student ID + Name</td><td>up to 4 members</td></tr>
+          <tr><td>Advisor</td><td>preferred, if any</td></tr>
+          <tr><td>Topic 1 — Name + <b>Expression of Interest</b></td><td>1st choice + reason</td></tr>
+          <tr><td>Topic 2 — Name + <b>Expression of Interest</b></td><td>2nd choice + reason</td></tr>
+          <tr><td>Topic 3 — Name + <b>Expression of Interest</b></td><td>3rd choice + reason</td></tr>
+          <tr><td>Topic 4 — Name + Expression of Interest</td><td>optional 4th</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px;font-size:13.5px;color:var(--ink-2)"><b>Proposal deliverable:</b> use the programme <b>Research Proposal Template</b> as the Seminar → Senior Project proposal backbone (kept in the Seminar course materials).</p>
+  </section>
+
+  <!-- LANES -->
+  <section class="sec" id="lanes">
+    <p class="sec-k">8 &amp; 9 · Quick guides</p>
+    <h2>Your lane</h2>
+    <div class="grid2">
+      <div class="box a1">
+        <p class="num">Students</p>
+        <h3>What groups do</h3>
+        <ol class="steps">
+          <li><b>Form your group early</b> (≤4) — mix your skills.</li>
+          <li><b>Attend every pitch</b> — you can only bid on topics you understood.</li>
+          <li><b>Rank ≥3 topics</b>; put your genuine first choice first.</li>
+          <li>Write a <b>strong Expression of Interest</b> for each (skills, prior work, motivation) — this decides ties.</li>
+          <li><b>Submit before the deadline</b>; late/incomplete bids risk leftover topics.</li>
+          <li>After the announcement, meet your advisor within <span class="mono">[ ]</span> days to agree scope.</li>
+        </ol>
+        <p style="margin:12px 0 0;font-size:13px;color:var(--ink-3)"><b>Remember:</b> the topic you get is likely the one you carry through Senior Project 1 &amp; 2 — choose for the long game.</p>
+      </div>
+      <div class="box a2">
+        <p class="num">Advisors</p>
+        <h3>What advisors do</h3>
+        <ol class="steps">
+          <li><b>Contribute topics</b> from your research or partner needs, with clear scope and expected outcome.</li>
+          <li><b>Declare capacity</b> — how many groups you can supervise <span class="todo">ยืนยัน max</span></li>
+          <li><b>Pitch clearly</b> on Pitching Day: the problem, what "done" looks like, skills needed.</li>
+          <li><b>Support matching</b> — review Expressions of Interest for groups requesting your topic.</li>
+          <li>Hold a <b>kickoff</b> with the assigned group; set the proposal timeline.</li>
+          <li>Shape scope so it <b>extends naturally into Senior Project 1 → 2</b>.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVIDENCE -->
+  <section class="sec" id="evidence">
+    <p class="sec-k">10 · Records &amp; AUN-QA evidence</p>
+    <h2>What to keep, and why</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Record</th><th>Stage</th><th>AUN-QA use</th></tr></thead>
+        <tbody>
+          <tr><td>Topic Sheet (stakeholders named)</td><td>2</td><td>3.4, 8.4 — stakeholder / industry input</td></tr>
+          <tr><td>Pitch materials</td><td>3</td><td>3.3, 3.4 — teaching &amp; learning approach</td></tr>
+          <tr><td>Bidding responses</td><td>4</td><td>3.4 — student choice &amp; engagement</td></tr>
+          <tr><td>Matching decision record</td><td>5</td><td>4.3 — fair, transparent assessment process</td></tr>
+          <tr><td>Official announcement</td><td>6</td><td>4.3, 8.4 — documented outcome</td></tr>
+          <tr><td>Seminar → Senior Project proposals</td><td>7–8</td><td>1.5, 2.5, 3.3 — constructive alignment, continuity</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 style="margin-top:30px;font-size:clamp(18px,2.6vw,24px)">Appendix — AUN-QA mapping</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>AUN-QA criterion</th><th>How this SOP contributes</th></tr></thead>
+        <tbody>
+          <tr><td><b>1.5</b> Expected Learning Outcomes</td><td>Real, supervised topics that verify PLOs through Senior Project</td></tr>
+          <tr><td><b>2.5</b> Programme Structure &amp; Content</td><td>Explicit Seminar → SP1 → SP2 continuity pathway</td></tr>
+          <tr><td><b>3.3 / 3.4</b> Teaching &amp; Learning</td><td>Stakeholder-driven, problem-based, student-choice model</td></tr>
+          <tr><td><b>4.3</b> Student Assessment</td><td>Transparent, published matching and evaluation rules</td></tr>
+          <tr><td><b>8.4</b> Output &amp; Outcomes</td><td>Documented industry / stakeholder engagement per cohort</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>Seminar Topic Selection · Standard Operating Procedure · draft v1 · Owner: Programme Coordinator, School of Applied Digital Technology, Mae Fah Luang University. Reviewed annually before Pitching Day.</p>
+    <p><b>Before publishing to students,</b> the course team must resolve every <span class="todo">TO CONFIRM</span> item (matching tie-break basis, capacity per topic, max groups per advisor, fallback plan, and the timeline).</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  document.getElementById('tg').addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    document.documentElement.setAttribute('data-theme', cur? (cur==='dark'?'light':'dark') : (matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark'));
+  });
+  document.getElementById('print').addEventListener('click',function(){window.print();});
+})();
+</script>
+</body>
+</html>
