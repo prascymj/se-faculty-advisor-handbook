@@ -147,8 +147,59 @@
   footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);font-size:clamp(12.5px,1.6vw,14px);color:var(--ink-3)}
   footer b{color:var(--ink-2)}
 
+  /* ===== 2026 FOCUS: lift C6 & C8 to 4 ===== */
+  .pillnav{display:flex;flex-wrap:wrap;gap:8px}
+  .pillnav a{font-size:13px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:20px;padding:7px 14px;white-space:nowrap}
+  .pillnav a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+  .pillnav a.hot{background:var(--accent-soft);border-color:transparent;color:var(--accent);font-weight:700}
+
+  /* quick access strip — most-used systems */
+  .qa-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:12px}
+  .qa{display:flex;flex-direction:column;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 14px;box-shadow:var(--shadow);transition:transform .12s ease,border-color .12s ease}
+  .qa:hover{border-color:var(--accent);text-decoration:none;transform:translateY(-2px)}
+  .qa .qt{font-weight:750;font-size:13.5px;color:var(--ink)}
+  .qa .qd{font-size:11px;color:var(--ink-3);line-height:1.25}
+  @media (max-width:900px){.qa-grid{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:520px){.qa-grid{grid-template-columns:1fr 1fr}}
+
+  .scoreboard{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .sb{flex:1;min-width:98px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 10px;text-align:center;box-shadow:var(--shadow)}
+  .sb .sc-c{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  .sb .sc-n{font-size:23px;font-weight:800;margin-top:3px;line-height:1;color:var(--good)}
+  .sb .sc-l{font-size:10.5px;color:var(--ink-3);margin-top:4px;line-height:1.2}
+  .sb.focus{border-color:var(--accent);background:var(--accent-soft)}
+  .sb.focus .sc-n{color:var(--accent)}
+  .sb.focus .sc-c{color:var(--accent)}
+
+  .focus-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+  .focus-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--p1);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow)}
+  .focus-card.c8{border-top-color:var(--p4)}
+  .focus-card .fc-top{display:flex;align-items:center;gap:10px}
+  .focus-card .fc-crit{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;letter-spacing:.05em;color:var(--p1)}
+  .focus-card.c8 .fc-crit{color:var(--p4)}
+  .focus-card .fc-move{margin-left:auto;font-family:ui-monospace,Menlo,monospace;font-size:15px;font-weight:800}
+  .focus-card .fc-move .from{color:var(--stop)} .focus-card .fc-move .to{color:var(--good)}
+  .focus-card h3{margin:7px 0 0;font-size:clamp(17px,2.3vw,21px);font-weight:780;letter-spacing:-.01em}
+  .focus-card .fc-gap{font-size:13px;color:var(--ink-2);margin:11px 0 0;background:var(--paper);border-left:3px solid var(--warn);border-radius:0 8px 8px 0;padding:9px 12px}
+  .focus-card .fc-gap b{color:var(--ink)}
+  .focus-card .fc-k{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:15px 0 8px}
+  .focus-card ul.do{margin:0;padding-left:17px;font-size:13.5px;color:var(--ink-2);display:flex;flex-direction:column;gap:7px}
+  .focus-card ul.do b{color:var(--ink)}
+  .focus-card .fc-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+
+  /* reusable highlight badge + focus markers across sections */
+  .fbadge{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.02em;
+    border-radius:6px;padding:2px 7px;vertical-align:1px;white-space:nowrap}
+  .fbadge.c6{color:#fff;background:var(--p1)}
+  .fbadge.c8{color:#fff;background:var(--p4)}
+  details.scn.focus6>summary{box-shadow:inset 3px 0 0 var(--p1)}
+  details.scn.focus8>summary{box-shadow:inset 3px 0 0 var(--p4)}
+  details.scn.focus6>summary .stag,details.scn.focus8>summary .stag{color:var(--ink);font-weight:700}
+  tr.focus-row td{background:var(--accent-soft)}
+
   @media (max-width:760px){
     .cols,.grid3,.grid4{grid-template-columns:1fr}
+    .focus-wrap{grid-template-columns:1fr}
     .wrap{padding:78px 18px 80px}
   }
 </style>
@@ -182,36 +233,103 @@
     Never place student names, IDs, cases, grades, or system passwords here. Handle all personal data under <b>PDPA</b> — de-identify for analysis.
   </div>
 
+  <!-- 2026 FOCUS: lift C6 & C8 to 4 -->
+  <section class="sec" id="focus" style="margin-top:34px">
+    <div class="sec-head">
+      <p class="eyebrow" style="margin:0">Focus for AY2569 · AUN-QA 2025 result</p>
+      <h2 style="margin-top:6px">Two criteria to lift from&nbsp;3&nbsp;→&nbsp;4</h2>
+      <p class="lead" style="margin-top:8px">Assessors scored the programme <b>4</b> across the board — except <b>Student Support (C6)</b> and <b>Output &amp; Outcomes (C8)</b>, which sit at <b>3</b>. Everything tagged <span class="fbadge c6">C6&nbsp;→&nbsp;4</span> <span class="fbadge c8">C8&nbsp;→&nbsp;4</span> in this handbook is the concrete work that closes that gap.</p>
+    </div>
+
+    <div class="scoreboard" aria-label="AUN-QA 2025 committee scores">
+      <div class="sb"><div class="sc-c">C1</div><div class="sc-n">4</div><div class="sc-l">Learning outcomes</div></div>
+      <div class="sb"><div class="sc-c">C2</div><div class="sc-n">4</div><div class="sc-l">Structure</div></div>
+      <div class="sb"><div class="sc-c">C3</div><div class="sc-n">4</div><div class="sc-l">Teaching</div></div>
+      <div class="sb"><div class="sc-c">C4</div><div class="sc-n">4</div><div class="sc-l">Assessment</div></div>
+      <div class="sb"><div class="sc-c">C5</div><div class="sc-n">4</div><div class="sc-l">Staff</div></div>
+      <div class="sb focus"><div class="sc-c">C6</div><div class="sc-n">3</div><div class="sc-l">Student support</div></div>
+      <div class="sb"><div class="sc-c">C7</div><div class="sc-n">4</div><div class="sc-l">Facilities</div></div>
+      <div class="sb focus"><div class="sc-c">C8</div><div class="sc-n">3</div><div class="sc-l">Output &amp; outcomes</div></div>
+    </div>
+
+    <div class="focus-wrap">
+      <!-- C6 -->
+      <div class="focus-card c6">
+        <div class="fc-top">
+          <span class="fc-crit">AUN-QA 6 · Student Support</span>
+          <span class="fc-move"><span class="from">3</span> → <span class="to">4</span></span>
+        </div>
+        <h3>A working academic advising system</h3>
+        <p class="fc-gap"><b>Assessors asked for:</b> a practical advising system that actually runs; co-curricular participation data collected systematically; campus-environment survey results acted upon.</p>
+        <p class="fc-k">How this handbook closes it</p>
+        <ul class="do">
+          <li><b>One advising log</b> for every session — date, topic, agreed action (de-identified).</li>
+          <li><b>Early-warning</b> on GPA / absence / well-being → recorded intervention &amp; outcome.</li>
+          <li><b>Referral</b> route to Counselling for financial, health and mental-health needs.</li>
+          <li>Evidence captured <b>as it happens</b>, not reconstructed at year-end.</li>
+        </ul>
+        <div class="fc-links">
+          <a class="lnk solid" href="#responsibilities">Advisor duties ↓</a>
+          <a class="lnk" href="#scenarios">Support scenarios ↓</a>
+          <a class="lnk" href="https://docs.google.com/forms/d/e/1FAIpQLSdOsAkTlkqcrW8vpqmIV7QwOpjRx-GHFlU9F8X6yYlQ2BmPBQ/viewform" target="_blank" rel="noopener">Advising Log ↗</a>
+        </div>
+      </div>
+      <!-- C8 -->
+      <div class="focus-card c8">
+        <div class="fc-top">
+          <span class="fc-crit">AUN-QA 8 · Output &amp; Outcomes</span>
+          <span class="fc-move"><span class="from">3</span> → <span class="to">4</span></span>
+        </div>
+        <h3>Root-cause analysis &amp; outcome evidence</h3>
+        <p class="fc-gap"><b>Assessors asked for:</b> root-cause analysis of dropout, late graduation and unemployment; action on the soft-skill gaps (PLO2/3/6 — English &amp; presentation) employers rated 3.50/5.</p>
+        <p class="fc-k">How this handbook closes it</p>
+        <ul class="do">
+          <li><b>Dropout capture</b> — advisor exit note + student-voice form → coded causes → semester root-cause report.</li>
+          <li><b>Employer PLO scores</b> at every site visit → PLO attainment &amp; employability data.</li>
+          <li><b>Withdrawal / transfer reasons</b> logged distinctly to explain late graduation.</li>
+          <li>Graduate-employment tracer used in career &amp; co-op advising.</li>
+        </ul>
+        <div class="fc-links">
+          <a class="lnk solid" href="#scenarios">Dropout playbook ↓</a>
+          <a class="lnk" href="#evidence">Outcome evidence ↓</a>
+          <a class="lnk" href="aunqa-mapping.html">AUN-QA evidence map ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK ACCESS -->
+  <section class="sec" id="quick" style="margin-top:32px">
+    <p class="eyebrow" style="margin:0 0 2px">Quick access · the systems you use most</p>
+    <div class="qa-grid">
+      <a class="qa" href="https://reg.mfu.ac.th/" target="_blank" rel="noopener"><span class="qt">REG Dashboard</span><span class="qd">GPA · credits · early-warning</span></a>
+      <a class="qa" href="https://reg.mfu.ac.th/announcement/academic-calendar" target="_blank" rel="noopener"><span class="qt">Academic Calendar</span><span class="qd">Add/drop · W · exams</span></a>
+      <a class="qa" href="https://docs.google.com/forms/d/e/1FAIpQLSdOsAkTlkqcrW8vpqmIV7QwOpjRx-GHFlU9F8X6yYlQ2BmPBQ/viewform" target="_blank" rel="noopener"><span class="qt">Advising Log</span><span class="qd">Record every session</span></a>
+      <a class="qa" href="https://counselling.mfu.ac.th/counselling-home.html" target="_blank" rel="noopener"><span class="qt">Counselling Referral</span><span class="qd">Well-being &amp; support</span></a>
+      <a class="qa" href="https://docs.google.com/spreadsheets/d/1LLmn6yqImGQWg_nX6DZAhDUPa0NtytxhOXMdz7Zn2nc/edit?usp=sharing" target="_blank" rel="noopener"><span class="qt">Rubric Template</span><span class="qd">Senior Project scoring</span></a>
+      <a class="qa" href="tqf-directory.html"><span class="qt">TQF Directory</span><span class="qd">มคอ. per course</span></a>
+    </div>
+    <p style="margin:9px 0 0;font-size:12.5px;color:var(--ink-3)">All systems open in the MFU Workspace / REG and need an MFU login · full set under <a href="#links">Links &amp; tools ↓</a></p>
+  </section>
+
   <!-- QUICKNAV -->
-  <style>
-    .toc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:8px}
-    .toc-col{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow)}
-    .toc-k{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px}
-    .toc-col a{font-size:13.5px;color:var(--ink-2);line-height:1.35}
-    .toc-col a:hover{color:var(--accent)}
-    @media (max-width:760px){.toc-grid{grid-template-columns:1fr 1fr}}
-  </style>
   <nav class="sec" id="toc" aria-label="On this page" style="margin-top:34px">
-    <p class="eyebrow" style="margin:0">On this page</p>
-    <div class="toc-grid">
-      <div class="toc-col"><span class="toc-k">Start here</span>
-        <a href="#philosophy">Educational philosophy</a>
-        <a href="#principles">Working principles</a></div>
-      <div class="toc-col"><span class="toc-k">What you do</span>
-        <a href="#responsibilities">Core responsibilities</a>
-        <a href="#scenarios">Advising scenarios</a>
-        <a href="#seminar-topic-selection">Seminar topic selection</a></div>
-      <div class="toc-col"><span class="toc-k">When</span>
-        <a href="#annual-plan">The year at a glance</a></div>
-      <div class="toc-col"><span class="toc-k">Records &amp; tools</span>
-        <a href="#evidence">Evidence quick-reference</a>
-        <a href="#links">Links &amp; tools</a>
-        <a href="#se-lab">SE lab &amp; facilities</a>
-        <a href="aunqa-mapping.html">AUN-QA evidence map</a></div>
-      <div class="toc-col"><span class="toc-k">Reference</span>
-        <a href="programme-plos.html">Programme &amp; PLOs</a>
-        <a href="plo-map.html">PLO &times; Course map</a>
-        <a href="tqf-directory.html">Course TQF directory</a></div>
+    <p class="eyebrow" style="margin:0 0 10px">On this page</p>
+    <div class="pillnav">
+      <a href="#focus" class="hot">2026 focus</a>
+      <a href="#quick">Quick access</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#responsibilities">Responsibilities</a>
+      <a href="#scenarios">Scenarios</a>
+      <a href="#seminar-topic-selection">Seminar SOP</a>
+      <a href="#annual-plan">Year at a glance</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#links">Links &amp; tools</a>
+      <a href="#se-lab">SE lab</a>
+      <a href="aunqa-mapping.html">AUN-QA map ↗</a>
+      <a href="programme-plos.html">PLOs ↗</a>
+      <a href="plo-map.html">PLO×Course ↗</a>
+      <a href="tqf-directory.html">TQF directory ↗</a>
     </div>
   </nav>
 
@@ -301,7 +419,7 @@
       <!-- 1 -->
       <div class="box a1">
         <p class="num">Responsibility 01</p>
-        <h3>Academic Advisor</h3>
+        <h3>Academic Advisor <span class="fbadge c6" style="vertical-align:4px">C6&nbsp;→&nbsp;4</span></h3>
         <p class="role">Guiding, monitoring &amp; supporting your advisees</p>
         <div class="cols">
           <div>
@@ -462,8 +580,8 @@
       </div>
     </details>
 
-    <details class="scn">
-      <summary><span class="st">03</span><span class="sh">Leave of absence</span><span class="stag">C6 · student support</span></summary>
+    <details class="scn focus6">
+      <summary><span class="st">03</span><span class="sh">Leave of absence</span><span class="fbadge c6">C6&nbsp;→&nbsp;4</span><span class="stag">C6 · student support</span></summary>
       <div class="scn-body">
         <div class="step"><span class="n">1</span><div>Understand the reason (health, financial, personal) and expected return term.</div></div>
         <div class="step"><span class="n">2</span><div>Explain fee / registration rules for maintaining student status.</div></div>
@@ -472,8 +590,8 @@
       </div>
     </details>
 
-    <details class="scn">
-      <summary><span class="st">04</span><span class="sh">Academic probation / dismissal risk</span><span class="stag">C6 + C8 · early warning</span></summary>
+    <details class="scn focus6">
+      <summary><span class="st">04</span><span class="sh">Academic probation / dismissal risk</span><span class="fbadge c6">C6&nbsp;→&nbsp;4</span><span class="fbadge c8">C8&nbsp;→&nbsp;4</span><span class="stag">C6 + C8 · early warning</span></summary>
       <div class="scn-body">
         <div class="step"><span class="n">1</span><div>Identify via GPA threshold / failed-credit count on the REG dashboard.</div></div>
         <div class="step"><span class="n">2</span><div>Hold a support meeting: study-plan adjustment, tutoring, workload reduction.</div></div>
@@ -482,8 +600,8 @@
       </div>
     </details>
 
-    <details class="scn">
-      <summary><span class="st">05</span><span class="sh">Resignation / dropout — with qualitative capture</span><span class="stag">C8 · root cause</span></summary>
+    <details class="scn focus8">
+      <summary><span class="st">05</span><span class="sh">Resignation / dropout — with qualitative capture</span><span class="fbadge c8">C8&nbsp;→&nbsp;4</span><span class="stag">C8 · root cause</span></summary>
       <div class="scn-body">
         <div class="step"><span class="n">1</span><div>Student submits the withdrawal / resignation form (existing paper flow: student → secretary → advisor signs → dean signs).</div></div>
         <div class="step"><span class="n">2</span><div>At your signing moment, hold a short <b>exit conversation (~10 min)</b> and record on the <b>Advisor form</b>: warning signals seen, the main factor in your view, help already given, whether it was preventable. <b>This form is private — never shown to the student.</b></div></div>
@@ -495,8 +613,8 @@
       </div>
     </details>
 
-    <details class="scn">
-      <summary><span class="st">06</span><span class="sh">Reinstatement of student status (คืนสภาพ)</span><span class="stag">C6 + C8 · re-entry</span></summary>
+    <details class="scn focus6">
+      <summary><span class="st">06</span><span class="sh">Reinstatement of student status (คืนสภาพ)</span><span class="fbadge c6">C6&nbsp;→&nbsp;4</span><span class="fbadge c8">C8&nbsp;→&nbsp;4</span><span class="stag">C6 + C8 · re-entry</span></summary>
       <div class="scn-body">
         <div class="step"><span class="n">1</span><div>Clarify why status lapsed — resignation, low-GPA dismissal (retirement), or failure to register / maintain status — and whether the student is <b>eligible</b> to apply for reinstatement under MFU regulation.</div></div>
         <div class="step"><span class="n">2</span><div>Check the <b>reinstatement window &amp; deadline</b> and confirm the <b>remaining study time</b> still fits the maximum programme duration (≤ 2× / ≤ 8 years).</div></div>
@@ -507,8 +625,8 @@
       </div>
     </details>
 
-    <details class="scn">
-      <summary><span class="st">07</span><span class="sh">Mental-health concern</span><span class="stag">C6 · well-being</span></summary>
+    <details class="scn focus6">
+      <summary><span class="st">07</span><span class="sh">Mental-health concern</span><span class="fbadge c6">C6&nbsp;→&nbsp;4</span><span class="stag">C6 · well-being</span></summary>
       <div class="scn-body">
         <div class="step"><span class="n">1</span><div>Listen without judging; do not attempt to diagnose or counsel beyond your role.</div></div>
         <div class="step"><span class="n">2</span><div><b>Refer</b> to the University Counselling / Wellness Center promptly; share the contact with the student.</div></div>
@@ -527,8 +645,8 @@
       </div>
     </details>
 
-    <details class="scn">
-      <summary><span class="st">09</span><span class="sh">Internship / co-op issue</span><span class="stag">C1 + C8 · workplace</span></summary>
+    <details class="scn focus8">
+      <summary><span class="st">09</span><span class="sh">Internship / co-op issue</span><span class="fbadge c8">C8&nbsp;→&nbsp;4</span><span class="stag">C1 + C8 · workplace</span></summary>
       <div class="scn-body">
         <div class="step"><span class="n">1</span><div>Coordinate with the site supervisor; clarify expectations and PLO-linked assessment.</div></div>
         <div class="step"><span class="n">2</span><div>Conduct the site visit; collect the employer evaluation and student reflection.</div></div>
@@ -551,8 +669,8 @@
       </div>
     </details>
 
-    <details class="scn">
-      <summary><span class="st">10</span><span class="sh">Change of major / transfer</span><span class="stag">C2 + C8 · retention</span></summary>
+    <details class="scn focus8">
+      <summary><span class="st">10</span><span class="sh">Change of major / transfer</span><span class="fbadge c8">C8&nbsp;→&nbsp;4</span><span class="stag">C2 + C8 · retention</span></summary>
       <div class="scn-body">
         <div class="step"><span class="n">1</span><div>Understand the motivation (fit, interest, opportunity elsewhere).</div></div>
         <div class="step"><span class="n">2</span><div>Advise on credit transfer and process; complete the required forms.</div></div>
@@ -638,14 +756,14 @@
       </summary>
       <div class="disc-body">
     <p class="lead" style="margin:10px 0 12px">Granular evidence units, the criterion each supports, and how often to collect.</p>
-    <p style="margin:6px 0 16px"><a class="lnk solid" href="aunqa-mapping.html">📊 AUN-QA evidence map — section → sub-criterion →</a></p>
+    <p style="margin:6px 0 16px"><a class="lnk solid" href="aunqa-mapping.html">AUN-QA evidence map — section → sub-criterion →</a></p>
     <div class="tablewrap">
       <table>
         <thead><tr><th>Evidence unit</th><th>File where</th><th>Criterion</th><th>Cadence</th></tr></thead>
         <tbody>
-          <tr><td>Advising session record (de-identified)</td><td><code>C6</code> advising log</td><td>C6</td><td>Every session</td></tr>
-          <tr><td>Early-warning entry (trigger→action→outcome)</td><td><code>C6</code> early-warning</td><td>C6, C8</td><td>As it occurs</td></tr>
-          <tr><td>Counselling / mental-health referral (coded)</td><td><code>C6</code> referral (secure)</td><td>C6</td><td>As it occurs</td></tr>
+          <tr class="focus-row"><td>Advising session record (de-identified)</td><td><code>C6</code> advising log</td><td>C6</td><td>Every session</td></tr>
+          <tr class="focus-row"><td>Early-warning entry (trigger→action→outcome)</td><td><code>C6</code> early-warning</td><td>C6, C8</td><td>As it occurs</td></tr>
+          <tr class="focus-row"><td>Counselling / mental-health referral (coded)</td><td><code>C6</code> referral (secure)</td><td>C6</td><td>As it occurs</td></tr>
           <tr><td>Signed academic request (add/drop, leave, W)</td><td>Secretary file</td><td>C4</td><td>Per request</td></tr>
           <tr><td>IDP / TOR + review</td><td><code>C5</code> staff</td><td>C5</td><td>Yearly</td></tr>
           <tr><td>Post-training impact log</td><td><code>C5</code> staff</td><td>C5, C3</td><td>Each term</td></tr>
@@ -656,8 +774,8 @@
           <tr><td>Exit Exam item → PLO map</td><td><code>C1</code> / <code>C8</code></td><td>C1, C8</td><td>March</td></tr>
           <tr><td>Senior Project rubric → PLO map</td><td><code>C1</code> / <code>C4</code></td><td>C1, C4</td><td>End of SP</td></tr>
           <tr><td>TQF5 + course verification (ทวนสอบ)</td><td><code>C4</code></td><td>C4</td><td>End of term</td></tr>
-          <tr><td>Dropout register entry + coded causes</td><td><code>C8</code> (de-identified)</td><td>C8</td><td>Per case</td></tr>
-          <tr><td>Site-visit report + employer evaluation</td><td><code>C1</code> / <code>C8</code></td><td>C1, C8</td><td>Feb / May</td></tr>
+          <tr class="focus-row"><td>Dropout register entry + coded causes</td><td><code>C8</code> (de-identified)</td><td>C8</td><td>Per case</td></tr>
+          <tr class="focus-row"><td>Site-visit report + employer evaluation</td><td><code>C1</code> / <code>C8</code></td><td>C1, C8</td><td>Feb / May</td></tr>
         </tbody>
       </table>
     </div>
@@ -886,7 +1004,7 @@
   <footer>
     <p><b>Data protection.</b> This handbook holds no personal data. All student records are handled under Thailand's PDPA —
     collected with purpose, de-identified for analysis, access-restricted, and never published here.</p>
-    <p>SE Programme Faculty &amp; Advisor Handbook · v1.1 · Academic Year 2569 · Maintained by the Programme Coordinator,
+    <p>SE Programme Faculty &amp; Advisor Handbook · v1.2 · Academic Year 2569 · Maintained by the Programme Coordinator,
     School of Applied Digital Technology, Mae Fah Luang University.</p>
   </footer>
 
