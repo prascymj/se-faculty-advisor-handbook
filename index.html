@@ -153,14 +153,17 @@
   .pillnav a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
   .pillnav a.hot{background:var(--accent-soft);border-color:transparent;color:var(--accent);font-weight:700}
 
-  /* quick access strip — most-used systems */
-  .qa-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:12px}
-  .qa{display:flex;flex-direction:column;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 14px;box-shadow:var(--shadow);transition:transform .12s ease,border-color .12s ease}
-  .qa:hover{border-color:var(--accent);text-decoration:none;transform:translateY(-2px)}
-  .qa .qt{font-weight:750;font-size:13.5px;color:var(--ink)}
-  .qa .qd{font-size:11px;color:var(--ink-3);line-height:1.25}
-  @media (max-width:900px){.qa-grid{grid-template-columns:repeat(3,1fr)}}
-  @media (max-width:520px){.qa-grid{grid-template-columns:1fr 1fr}}
+  /* quick access strip — key systems (colour-coded) */
+  .qa-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+  .qa{display:flex;flex-direction:column;gap:3px;background:var(--card);border:1px solid var(--line);border-left-width:4px;border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);transition:transform .12s ease,box-shadow .12s ease}
+  .qa:hover{text-decoration:none;transform:translateY(-2px);box-shadow:0 2px 4px rgba(20,27,36,.06),0 14px 34px rgba(20,27,36,.12)}
+  .qa .qk{font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;font-weight:700}
+  .qa .qt{font-weight:770;font-size:14.5px;color:var(--ink)}
+  .qa .qd{font-size:11.5px;color:var(--ink-3);line-height:1.3;margin-top:1px}
+  .qa.k1{border-left-color:var(--p1);background:color-mix(in srgb,var(--p1) 6%,var(--card))} .qa.k1 .qk{color:var(--p1)}
+  .qa.k2{border-left-color:var(--p2);background:color-mix(in srgb,var(--p2) 7%,var(--card))} .qa.k2 .qk{color:var(--p2)}
+  .qa.k3{border-left-color:var(--p4);background:color-mix(in srgb,var(--p4) 6%,var(--card))} .qa.k3 .qk{color:var(--p4)}
+  @media (max-width:620px){.qa-grid{grid-template-columns:1fr}}
 
   .scoreboard{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
   .sb{flex:1;min-width:98px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 10px;text-align:center;box-shadow:var(--shadow)}
@@ -302,14 +305,11 @@
   <section class="sec" id="quick" style="margin-top:32px">
     <p class="eyebrow" style="margin:0 0 2px">Quick access · the systems you use most</p>
     <div class="qa-grid">
-      <a class="qa" href="https://reg.mfu.ac.th/" target="_blank" rel="noopener"><span class="qt">REG Dashboard</span><span class="qd">GPA · credits · early-warning</span></a>
-      <a class="qa" href="https://reg.mfu.ac.th/announcement/academic-calendar" target="_blank" rel="noopener"><span class="qt">Academic Calendar</span><span class="qd">Add/drop · W · exams</span></a>
-      <a class="qa" href="https://docs.google.com/forms/d/e/1FAIpQLSdOsAkTlkqcrW8vpqmIV7QwOpjRx-GHFlU9F8X6yYlQ2BmPBQ/viewform" target="_blank" rel="noopener"><span class="qt">Advising Log</span><span class="qd">Record every session</span></a>
-      <a class="qa" href="https://counselling.mfu.ac.th/counselling-home.html" target="_blank" rel="noopener"><span class="qt">Counselling Referral</span><span class="qd">Well-being &amp; support</span></a>
-      <a class="qa" href="https://docs.google.com/spreadsheets/d/1LLmn6yqImGQWg_nX6DZAhDUPa0NtytxhOXMdz7Zn2nc/edit?usp=sharing" target="_blank" rel="noopener"><span class="qt">Rubric Template</span><span class="qd">Senior Project scoring</span></a>
-      <a class="qa" href="tqf-directory.html"><span class="qt">TQF Directory</span><span class="qd">มคอ. per course</span></a>
+      <a class="qa k1" href="sp-stakeholder-rubric.html"><span class="qk">Assessment</span><span class="qt">Stakeholder Rubric</span><span class="qd">Score a team on the 6 PLOs (Seminar → SP)</span></a>
+      <a class="qa k2" href="https://script.google.com/a/macros/mfu.ac.th/s/AKfycbwJqavvrcydrYWooQCHBeD0gdXh_szzIN3xMnvWqyc39BWJrg0r9II5v6D5dD5Phb14hw/exec" target="_blank" rel="noopener"><span class="qk">Facilities</span><span class="qt">SE Lab Booking</span><span class="qd">Reserve S7A-104 &amp; equipment · Aj Tew</span></a>
+      <a class="qa k3" href="https://docs.google.com/forms/d/e/1FAIpQLSdOsAkTlkqcrW8vpqmIV7QwOpjRx-GHFlU9F8X6yYlQ2BmPBQ/viewform" target="_blank" rel="noopener"><span class="qk">Student care</span><span class="qt">Advising &amp; Case Log</span><span class="qd">Log every advising / dropout case</span></a>
     </div>
-    <p style="margin:9px 0 0;font-size:12.5px;color:var(--ink-3)">All systems open in the MFU Workspace / REG and need an MFU login · full set under <a href="#links">Links &amp; tools ↓</a></p>
+    <p style="margin:11px 0 0;font-size:12.5px;color:var(--ink-3)">MFU-login systems (except the public rubric) · the full toolset is under <a href="#links">Links &amp; tools ↓</a></p>
   </section>
 
   <!-- QUICKNAV -->
